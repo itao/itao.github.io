@@ -1,40 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light" data-lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ian Tao</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
-    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script>
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+        var storedLang = localStorage.getItem('lang');
+        document.documentElement.setAttribute('data-lang', storedLang || 'en');
+      })();
+    </script>
   </head>
   <body>
-    <section class="hero is-fullheight">
+    <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Hi, I'm Ian.</h1>
-          <div class="content is-medium">
-            <p>
-              For work, I build products that turn problems into profit. And
-              then for fun, I turn profit into sawdust.
-            </p>
-            <p>
-              I've been a product manager, engineer, and founder at some of the
-              world's largest (and smallest) technology companies for over a
-              decade.
-            </p>
-            <p>
-              If interested, you can find me on
-              <a href="https://www.linkedin.com/in/iantao/">LinkedIn</a>.
-            </p>
+          <img class="portrait" src="assets/images/illustrations/portrait.webp" alt="Portrait of Ian" />
+          <div class="text-content">
+            <h1>
+              <span class="lang-en">Hi, I'm Ian.</span>
+              <span class="lang-zh">您好，我是陶宇亮。</span>
+            </h1>
+            <div class="content">
+              <p>
+                <span class="lang-en">I've been a product manager, engineer, and founder at some of the
+                world's largest (and smallest) technology companies.</span>
+                <span class="lang-zh">我在不同规模的科技公司当过产品经理，工程师，和创始人。</span>
+              </p>
+              <p>
+                <span class="lang-en">If interested, let's connect on
+                <a href="https://www.linkedin.com/in/iantao/">LinkedIn</a>.</span>
+                <span class="lang-zh">如果有兴趣联系的话，我们在
+                <a href="https://www.linkedin.com/in/iantao/">LinkedIn</a> 上见。</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <button id="lang-toggle" aria-label="Switch language / 切换语言">
+      <span class="lang-en">中</span>
+      <span class="lang-zh">EN</span>
+    </button>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+    <script>
+      document.getElementById('theme-toggle').addEventListener('click', function() {
+        var root = document.documentElement;
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+      document.getElementById('lang-toggle').addEventListener('click', function() {
+        var root = document.documentElement;
+        var next = root.getAttribute('data-lang') === 'en' ? 'zh' : 'en';
+        root.setAttribute('data-lang', next);
+        localStorage.setItem('lang', next);
+      });
+    </script>
   </body>
 </html>

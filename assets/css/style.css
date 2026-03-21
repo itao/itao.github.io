@@ -1,0 +1,369 @@
+/* ============================================================
+   Taoian Brand System — CSS Custom Properties
+   Version 1.0 · March 2026
+   ============================================================ */
+
+:root {
+  /* --- Color: Backgrounds --- */
+  --bg-primary:   #1C1810;  /* Chalkboard */
+  --bg-elevated:  #252018;  /* Warm Shadow */
+
+  /* --- Color: Text --- */
+  --text-primary:   #EDE9D8;                    /* Chalk White */
+  --text-secondary: rgba(237, 233, 216, 0.68);
+  --text-tertiary:  rgba(237, 233, 216, 0.45);
+  --text-faint:     rgba(237, 233, 216, 0.25);
+  --text-ink:       #9DB0D3;                    /* Chalk Ink */
+
+  /* --- Color: Semantic --- */
+  --color-primary:  #97B893;  /* Sage Dust */
+  --color-warning:  #C8923A;  /* Amber Chalk */
+  --color-alert:    #C07070;  /* Plum Deep */
+  --color-info:     #8AACBF;  /* Chalk Sky */
+  --color-ink:      #1A2744;  /* Ink Navy */
+
+  /* --- Color: Lines --- */
+  --line:        rgba(237, 233, 216, 0.08);
+  --line-strong: rgba(237, 233, 216, 0.15);
+
+  /* --- Typography: Families --- */
+  --font-display: 'DM Serif Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* --- Typography: CJK Families --- */
+  --font-display-cjk: 'DM Serif Display', 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --font-body-cjk:    'DM Sans', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+
+  /* --- Typography: CJK Scale (headings only) --- */
+  --text-display-cjk: 72px;
+  --text-h1-cjk:      55px;
+  --text-h2-cjk:      42px;
+  --text-h3-cjk:      32px;
+  --text-h4-cjk:      24px;
+
+  /* --- Typography: CJK Leading --- */
+  --leading-display-cjk: 1.20;
+  --leading-heading-cjk: 1.35;
+  --leading-body-cjk:    1.90;
+  --leading-caption-cjk: 1.70;
+
+  /* --- Typography: Scale --- */
+  --text-display: 80px;
+  --text-h1:      60px;
+  --text-h2:      45px;
+  --text-h3:      34px;
+  --text-h4:      25px;
+  --text-body-lg: 20px;
+  --text-body:    16px;
+  --text-sm:      14px;
+  --text-label:   12px;
+
+  /* --- Typography: Leading --- */
+  --leading-display: 1.05;
+  --leading-heading: 1.20;
+  --leading-body:    1.72;
+  --leading-loose:   1.85;
+
+  /* --- Spacing Scale (8px base) --- */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-11: 192px;
+
+  /* --- Layout --- */
+  --width-prose:   680px;
+  --width-content: 960px;
+  --width-wide:    1200px;
+  --gutter:        24px;
+  --page-margin:   clamp(20px, 4vw, 48px);
+
+  /* --- Border Radius --- */
+  --radius-none: 0px;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-sm:    0 1px 3px rgba(28, 24, 16, 0.14), 0 1px 2px rgba(28, 24, 16, 0.08);
+  --shadow-md:    0 4px 16px rgba(28, 24, 16, 0.16), 0 2px 6px rgba(28, 24, 16, 0.10);
+  --shadow-lg:    0 16px 40px rgba(28, 24, 16, 0.22), 0 6px 14px rgba(28, 24, 16, 0.12);
+  --shadow-inset: inset 0 1px 3px rgba(28, 24, 16, 0.14);
+}
+
+/* --- Light mode overrides --- */
+[data-theme="light"] {
+  --bg-primary:   #F4EDD8;  /* Forest Morning */
+  --bg-elevated:  #FDFAF2;  /* Parchment */
+
+  --text-primary:   #2E2418;                  /* Deep Wood */
+  --text-secondary: rgba(46, 36, 24, 0.75);
+  --text-tertiary:  rgba(46, 36, 24, 0.50);
+  --text-faint:     rgba(46, 36, 24, 0.25);
+  --text-ink:       #1A2744;                  /* Ink Navy */
+
+  --color-primary:  #4E7A42;  /* Forest Sage */
+  --color-warning:  #A86830;  /* Bark Amber */
+  --color-alert:    #8A3838;  /* Plum Dark */
+  --color-info:     #4A7A94;  /* Slate Water */
+
+  --line:        rgba(46, 36, 24, 0.08);
+  --line-strong: rgba(46, 36, 24, 0.15);
+}
+
+/* ============================================================
+   Base Reset
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-body {
+  padding: var(--space-10) var(--page-margin);
+  width: 100%;
+}
+
+.container {
+  max-width: var(--width-content);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.portrait {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.text-content {
+  max-width: var(--width-prose);
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h1);
+  line-height: var(--leading-display);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.content p {
+  font-size: var(--text-body-lg);
+  line-height: 1.75;
+  margin-bottom: var(--space-5);
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   Links
+   ============================================================ */
+
+a {
+  color: var(--color-info);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--color-info);
+}
+
+/* ============================================================
+   Theme Toggle
+   ============================================================ */
+
+#theme-toggle {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 100;
+  background: var(--bg-primary);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: background 0.2s, color 0.2s;
+}
+
+#theme-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+[data-theme="dark"] .icon-moon  { display: none; }
+[data-theme="light"] .icon-sun { display: none; }
+
+[data-lang="en"] .lang-zh { display: none; }
+[data-lang="zh"] .lang-en { display: none; }
+
+/* ============================================================
+   Language Toggle
+   ============================================================ */
+
+#lang-toggle {
+  position: fixed;
+  top: var(--space-4);
+  right: 64px;
+  z-index: 100;
+  background: var(--bg-primary);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+#lang-toggle:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+
+/* ============================================================
+   CJK Typography (Chinese localization)
+   ============================================================ */
+
+[data-lang="zh"] body {
+  font-family: var(--font-body-cjk);
+  line-height: var(--leading-body-cjk);
+  font-feature-settings: "halt" 1;
+  letter-spacing: 0;
+}
+
+[data-lang="zh"] h1 {
+  font-family: var(--font-display-cjk);
+  font-size: var(--text-h1-cjk);
+  font-weight: 900;
+  line-height: var(--leading-display-cjk);
+  letter-spacing: 0;
+}
+
+[data-lang="zh"] h2 {
+  font-family: var(--font-display-cjk);
+  font-size: var(--text-h2-cjk);
+  font-weight: 700;
+  line-height: var(--leading-heading-cjk);
+  letter-spacing: 0;
+}
+
+[data-lang="zh"] h3 {
+  font-family: var(--font-display-cjk);
+  font-size: var(--text-h3-cjk);
+  font-weight: 700;
+  line-height: var(--leading-heading-cjk);
+  letter-spacing: 0;
+}
+
+[data-lang="zh"] h4 {
+  font-family: var(--font-display-cjk);
+  font-size: var(--text-h4-cjk);
+  font-weight: 700;
+  line-height: var(--leading-heading-cjk);
+  letter-spacing: 0;
+}
+
+[data-lang="zh"] .content p {
+  font-family: var(--font-body-cjk);
+  line-height: var(--leading-body-cjk);
+}
+
+[data-lang="zh"] #lang-toggle {
+  font-family: var(--font-body-cjk);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 639px) {
+  h1 {
+    font-size: clamp(28px, 9.5vw, 45px);
+  }
+
+  [data-lang="zh"] h1 {
+    font-size: clamp(26px, 8.5vw, 42px);
+  }
+
+  .content p {
+    font-size: var(--text-body);  /* 16px */
+  }
+
+  .hero-body {
+    padding: var(--space-9) var(--page-margin);  /* 96px */
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .portrait {
+    width: 200px;
+    height: 200px;
+  }
+}

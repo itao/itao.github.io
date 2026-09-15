@@ -256,11 +256,11 @@ function start() {
   }
   function dismissGesture() {
     gestureTip.hidden = true;
-    try { window.sessionStorage.setItem('whispering-pine-gestures-v1', 'seen'); } catch { /* Storage may be unavailable in an iframe. */ }
+    try { window.sessionStorage.setItem('digital-build-gestures-v1', 'seen'); } catch { /* Storage may be unavailable in an iframe. */ }
   }
   try {
     gestureTip.hidden = !mobileQuery.matches ||
-      window.sessionStorage.getItem('whispering-pine-gestures-v1') === 'seen';
+      window.sessionStorage.getItem('digital-build-gestures-v1') === 'seen';
   } catch { gestureTip.hidden = !mobileQuery.matches; }
   gestureDismiss.addEventListener('click', dismissGesture);
   renderer.domElement.addEventListener('pointerdown', dismissGesture, { once: true });

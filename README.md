@@ -3,7 +3,7 @@ Personal website.
 
 ## Digital twin (`db1`)
 
-`db1.html` is the public, read-only Whispering Pine viewer. Its local ES modules,
+`db1.html` is the public, read-only Digital Build viewer. Its local ES modules,
 scene snapshot, and pinned Three.js files are in `db1/`, so it works at
 `https://taoian.com/db1.html` when this repository root is published by GitHub
 Pages. The source converter/viewer lives in `pascal-to-threejs`; the publishable

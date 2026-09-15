@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123634">
+  <title>Whispering Pine · Explore the house</title>
+  <style>
+    :root { color-scheme: light; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #163b38; background: #eaf1ed; }
+    .app { display: grid; grid-template-columns: minmax(250px, 290px) minmax(0, 1fr); min-height: 100vh; }
+    aside { z-index: 2; padding: 26px 22px; background: #f8f8f2; box-shadow: 5px 0 25px #163b381a; }
+    .sheet-head, .mobile-topbar, .gesture-tip { display: none; }
+    .eyebrow { color: #777d68; text-transform: uppercase; letter-spacing: .16em; font-size: .7rem; font-weight: 700; }
+    h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.15rem); line-height: 1.12; margin: 12px 0 10px; }
+    .intro { line-height: 1.5; color: #49605a; margin: 0 0 25px; font-size: .92rem; }
+    h2 { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: #75847b; margin: 22px 0 10px; }
+    .levels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+    button, select { font: inherit; }
+    .levels button { border: 1px solid #d5dfd9; border-radius: 10px; background: #fff; color: #31524c; padding: 11px 7px; min-height: 44px; cursor: pointer; font-size: .84rem; }
+    .levels button[aria-pressed="true"] { color: #fff; background: #184d47; border-color: #184d47; }
+    .levels button:hover, .levels button:focus-visible { outline: 2px solid #93b9a4; outline-offset: 1px; }
+    select { width: 100%; border: 1px solid #cfdcd4; border-radius: 10px; padding: 11px; min-height: 48px; background: #fff; color: #234941; }
+    .switch { display: flex; align-items: center; gap: 10px; margin: 14px 0; font-size: .89rem; cursor: pointer; }
+    .switch input { accent-color: #226658; width: 17px; height: 17px; }
+    .detail { min-height: 85px; padding: 14px; border: 1px solid #dce7df; border-radius: 12px; background: #edf4ed; color: #3e5e54; line-height: 1.45; font-size: .88rem; }
+    .detail strong { display: block; color: #174b42; font-size: 1rem; margin-bottom: 3px; }
+    .fine { font-size: .72rem; line-height: 1.5; color: #79887e; margin-top: 20px; }
+    main { position: relative; min-height: 600px; overflow: hidden; background: linear-gradient(#d9e9e5, #eef4ee 62%, #e1e8dc); }
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    .hint, .badge { position: absolute; z-index: 1; padding: 9px 13px; background: #f8fbf2dd; border: 1px solid #ffffffaa; border-radius: 100px; color: #31544d; font-size: .76rem; backdrop-filter: blur(5px); pointer-events: none; }
+    .hint { bottom: 16px; left: 16px; }
+    .badge { top: 16px; right: 16px; }
+    .marker { position: absolute; z-index: 1; transform: translate(-50%, -50%); background: #fbfcf5e8; border: 1px solid #acc8b7; border-radius: 30px; color: #184d47; padding: 5px 9px; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .7rem; box-shadow: 0 2px 8px #173f3522; cursor: pointer; }
+    .marker:hover, .marker:focus-visible { background: #184d47; color: white; }
+    .error { padding: 25px; color: #8c2626; background: #fff8f4; }
+    .loading { position: absolute; z-index: 3; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      padding: 13px 20px; border-radius: 14px; background: #fbfff6e8; color: #24574d;
+      box-shadow: 0 5px 22px #28544b2b; font-size: .9rem; text-align: center; }
+    @media (max-width: 900px) {
+      body { overflow: hidden; }
+      .app { display: block; position: relative; height: 100vh; height: 100dvh; min-height: 0; overflow: hidden; }
+      main { position: absolute; inset: 0; height: 100%; min-height: 0; }
+      aside { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; height: 154px;
+        padding: 0 16px calc(12px + env(safe-area-inset-bottom)); overflow: hidden;
+        border-radius: 19px 19px 0 0; box-shadow: 0 -7px 30px #163b3840;
+        transition: height .22s ease; }
+      aside[data-expanded="true"] { height: min(70dvh, 620px); overflow-y: auto; }
+      .brand { display: none; }
+      .sheet-head { display: block; position: sticky; top: 0; z-index: 12; background: #f8f8f2; }
+      .sheet-head button { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        width: 100%; min-height: 48px; border: 0; padding: 5px 0; color: #174a43;
+        background: transparent; font-size: .9rem; font-weight: 650; cursor: pointer; }
+      .sheet-head button::before { content: ""; position: absolute; width: 34px; height: 4px;
+        background: #a4b8ab; border-radius: 9px; top: 3px; left: calc(50% - 17px); }
+      .sheet-head .chevron { font-size: 1.1rem; transition: transform .22s ease; }
+      aside[data-expanded="true"] .chevron { transform: rotate(180deg); }
+      aside h2 { margin: 4px 0 8px; }
+      .levels { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px;
+        scroll-snap-type: x proximity; scrollbar-width: none; }
+      .levels::-webkit-scrollbar { display: none; }
+      .levels button { flex: 0 0 auto; min-width: 93px; min-height: 48px; padding: 10px 12px;
+        scroll-snap-align: start; font-size: .86rem; }
+      .sheet-content { display: none; padding-bottom: 16px; }
+      aside[data-expanded="true"] .sheet-content { display: block; }
+      .sheet-content h2 { margin-top: 18px; }
+      .mobile-topbar { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+        position: absolute; z-index: 4; top: calc(8px + env(safe-area-inset-top));
+        left: 12px; right: 12px; padding: 5px 6px 5px 12px; border-radius: 14px;
+        background: #f8fbf2e8; box-shadow: 0 2px 12px #204e4424; backdrop-filter: blur(8px); }
+      .mobile-topbar strong { font-family: Georgia, serif; font-weight: 400; font-size: .99rem;
+        overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+      .top-actions { display: flex; gap: 4px; flex: 0 0 auto; }
+      .top-actions button, .top-actions a { display: inline-flex; align-items: center; justify-content: center;
+        min-height: 44px; min-width: 52px; border: 0; border-radius: 9px; padding: 0 8px;
+        color: #20574b; background: #e1eee3; font-size: .79rem; text-decoration: none; cursor: pointer; }
+      .top-actions button:focus-visible, .top-actions a:focus-visible,
+      .sheet-head button:focus-visible { outline: 2px solid #2f826a; outline-offset: 2px; }
+      .hint, .badge { display: none; }
+      .gesture-tip { display: flex; align-items: center; gap: 10px; position: absolute; z-index: 5;
+        top: calc(75px + env(safe-area-inset-top)); left: 12px; right: 12px;
+        padding: 10px 12px; border-radius: 12px; background: #f8fbf2ec;
+        box-shadow: 0 3px 16px #204e4426; color: #31544d; font-size: .78rem; }
+      .gesture-tip[hidden] { display: none; }
+      .gesture-tip button { border: 0; border-radius: 9px; background: #184d47; color: white;
+        padding: 8px 10px; min-height: 38px; flex: 0 0 auto; cursor: pointer; }
+      .marker { min-height: 44px; padding: 10px 12px; max-width: 120px; font-size: .74rem; }
+      .fine { margin-bottom: 12px; }
+    }
+    @media (max-width: 900px) and (max-height: 500px) {
+      aside { height: 116px; }
+      aside[data-expanded="true"] { height: min(88dvh, 480px); }
+      .gesture-tip { top: 64px; }
+    }
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"./db1/lib/three.module.js","three/addons/":"./db1/lib/"}}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside id="sheet" data-expanded="false" aria-label="Explore house controls">
+      <div class="sheet-head"><button id="sheet-toggle" type="button" aria-expanded="false" aria-controls="sheet-content">
+        <span id="sheet-summary">Explore floors & rooms</span><span class="chevron" aria-hidden="true">⌃</span>
+      </button></div>
+      <div class="brand">
+        <div class="eyebrow">Drawing-based digital twin</div>
+        <h1>Whispering Pine</h1>
+        <p class="intro">Explore the house, garage, ADU and rooms in a read-only 3D model.</p>
+      </div>
+      <h2>View</h2>
+      <div class="levels" id="levels" role="group" aria-label="Choose a floor"></div>
+      <div class="sheet-content" id="sheet-content">
+        <h2>Find a room</h2>
+        <select id="room" aria-label="Find a room"><option value="">Choose a room…</option></select>
+        <h2>Layers</h2>
+        <label class="switch"><input id="roof" type="checkbox" checked> Show roofs</label>
+        <label class="switch"><input id="xray" type="checkbox"> See through walls</label>
+        <label class="switch"><input id="ceilings" type="checkbox"> Show ceilings</label>
+        <h2>Selected room</h2>
+        <div class="detail" id="detail" aria-live="polite">Select a floor or a room to look inside.</div>
+        <p class="fine" id="provenance"></p>
+      </div>
+    </aside>
+    <main id="viewport" aria-label="Interactive 3D house model">
+      <div class="mobile-topbar"><strong>Whispering Pine</strong><div class="top-actions">
+        <button id="reset-view" type="button" aria-label="Reset to whole-house view">Reset</button>
+        <a href="./db1.html" target="_blank" rel="noopener" aria-label="Open full-page viewer">Open ↗</a>
+      </div></div>
+      <div class="loading" id="loading" role="status">Loading 3D model…</div>
+      <div class="gesture-tip" id="gesture-tip" hidden>One finger rotates · pinch zooms · two fingers pan
+        <button id="gesture-dismiss" type="button">Got it</button></div>
+      <div class="badge">N = −Z · metres</div>
+      <div class="hint">Drag to orbit · scroll/pinch to zoom · right-drag to pan</div>
+    </main>
+  </div>
+  <script type="module">
+    import('./db1/viewer.js').catch((error) => {
+      console.error(error);
+      const loading = document.querySelector('#loading');
+      loading.className = 'loading error';
+      loading.textContent = 'The 3D model could not load. Make sure all export files are present and serve this folder through GitHub Pages or a local web server.';
+    });
+  </script>
+</body>
+</html>

@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#F4EDD8" id="themeColor" />
-    <link rel="icon" href="data:," />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Physio" />
+    <meta name="application-name" content="Daily Physio" />
+    <link rel="manifest" href="/physio1.webmanifest" />
+    <link rel="apple-touch-icon" href="/physio1-assets/icon-192.png" />
+    <link rel="icon" href="/physio1-assets/icon-192.png" />
     <title>Daily Physio Exercises</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC&display=swap');
 
       :root {
         color-scheme: light dark;
@@ -107,7 +112,7 @@
         margin: 0;
         background: var(--page);
         color: var(--ink);
-        font-family: "DM Sans", "Noto Sans SC", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         font-size: 16px;
         font-weight: 300;
         line-height: 1.72;
@@ -232,7 +237,7 @@
       h1 {
         max-width: 680px;
         margin: 0;
-        font-family: "DM Serif Display", "Noto Serif SC", Georgia, serif;
+        font-family: Georgia, "Noto Serif SC", serif;
         font-size: 60px;
         font-weight: 400;
         line-height: 1.02;
@@ -316,7 +321,7 @@
       }
       .control-title h2 {
         margin: 0;
-        font-family: "DM Serif Display", "Noto Serif SC", Georgia, serif;
+        font-family: Georgia, "Noto Serif SC", serif;
         font-size: 1.02rem;
         font-weight: 400;
         letter-spacing: 0;
@@ -394,18 +399,104 @@
 
       button:focus-visible { outline: 3px solid var(--warning); outline-offset: 3px; }
 
-      @media (max-width: 639px) {
-        .app { padding-inline: 12px; }
-        h1 { font-size: clamp(28px, 10vw, 45px); }
-        .exercise-card { padding: 22px 18px 24px; }
-        .illustration { margin-inline: -18px; width: calc(100% + 36px); }
-        .navigation { grid-template-columns: 1fr 1.35fr; }
-        .theme-toggle { right: 10px; }
+      /* The viewport is the app shell; only the exercise content scrolls. */
+      [hidden] { display: none !important; }
+      html { height: 100%; scroll-behavior: auto; }
+      body { height: 100%; overflow: hidden; font-weight: 400; }
+      button { touch-action: manipulation; }
+      .app {
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        padding: calc(8px + env(safe-area-inset-top))
+          calc(12px + env(safe-area-inset-right))
+          calc(8px + env(safe-area-inset-bottom))
+          calc(12px + env(safe-area-inset-left));
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        gap: 8px;
       }
-      @media (min-width: 640px) {
-        .app { padding-inline: 24px; }
-        .control-grid.has-timer { grid-template-columns: 1fr 1fr; }
-        .navigation { grid-template-columns: 1fr 1fr; }
+      .progress-head { margin: 0; padding: 0; gap: 8px; min-width: 0; }
+      .step-label { margin-right: auto; font-size: 0.82rem; }
+      .reset-all { min-height: 44px; padding: 6px 10px; font-size: 0.82rem; }
+      .theme-toggle { position: static; flex-shrink: 0; box-shadow: none; }
+      .progress-track { margin: 0; height: 4px; }
+      .exercise-card {
+        min-width: 0;
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding: 20px 16px;
+        border-radius: 18px;
+        box-shadow: none;
+        display: block;
+        scroll-padding-block: 20px;
+      }
+      .exercise-number { font-size: 0.7rem; margin-bottom: 6px; }
+      h1 { font-size: clamp(28px, 7vw, 44px); line-height: 1.1; overflow-wrap: anywhere; }
+      .dose { margin-top: 12px; gap: 6px; }
+      .dose span { min-height: 28px; padding: 3px 9px; font-size: 0.78rem; }
+      .illustration { width: 100%; margin: 16px 0 0; border-radius: 12px; }
+      .illustration img { height: clamp(140px, 24dvh, 300px); max-height: none; }
+      .instructions { margin-top: 16px; font-size: 1rem; line-height: 1.6; font-weight: 400; }
+      .cue { margin-top: 12px; padding: 10px 12px; font-size: 0.87rem; }
+      .exercise-dock { min-width: 0; max-height: 55dvh; overflow-y: auto; }
+      .controls { margin: 0; padding: 0; }
+      .control-grid { gap: 8px; }
+      .control-grid.has-timer { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+      .control-panel { min-width: 0; padding: 10px; border-radius: 14px; }
+      .control-title { gap: 4px; margin-bottom: 8px; flex-wrap: wrap; }
+      .control-title h2 { font: 500 0.8rem/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .set-status { font-size: 0.7rem; }
+      .counter-row { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 4px; }
+      .timer-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+      .round-button, .timer-button, .next-set-button, .nav-button { min-height: 48px; }
+      .count-readout, .timer-readout { align-items: center; flex-wrap: wrap; gap: 2px; }
+      .count-current, .timer-current { font-size: 1.6rem; }
+      .count-target, .timer-unit { font-size: 0.75rem; }
+      .timer-readout { min-height: 32px; background: transparent; }
+      .timer-button, .next-set-button { font-size: 0.86rem; }
+      .timer-note { font-size: 0.7rem; margin-top: 6px; }
+      .done-note { margin: 6px 0 0; font-size: 0.82rem; }
+      .navigation { padding-top: 8px; grid-template-columns: 1fr 1.4fr; gap: 8px; }
+      .nav-button { border-radius: 14px; font-size: 0.9rem; }
+      .install-button { width: 100%; margin-top: 8px; min-height: 44px; border: 1px solid var(--hairline-strong); border-radius: 12px; background: var(--surface); color: var(--info); font-size: 0.85rem; }
+      @media (max-width: 359px) {
+        .app { padding-inline: calc(8px + env(safe-area-inset-left)) calc(8px + env(safe-area-inset-right)); }
+        .exercise-card { padding: 16px 12px; }
+        .control-panel { padding: 8px; }
+        .control-grid.has-timer { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+        .control-title { display: block; }
+        .counter-row { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 2px; }
+        .count-readout { flex-direction: column; }
+      }
+      @media (min-width: 600px) {
+        .app { gap: 12px; padding-inline: calc(24px + env(safe-area-inset-left)) calc(24px + env(safe-area-inset-right)); }
+        .exercise-card { padding: 28px; }
+        .control-panel { padding: 14px; }
+        .counter-row { grid-template-columns: 56px minmax(0, 1fr) 56px; }
+        .timer-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+        .timer-readout { min-height: 48px; background: var(--accent-soft); }
+        .instructions { font-size: 1.1rem; }
+        .illustration img { height: clamp(180px, 30dvh, 400px); }
+      }
+      @media (min-width: 700px) and (orientation: landscape) {
+        .exercise-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 28px; align-content: start; }
+        .exercise-number, h1, .dose, .instructions, .cue { grid-column: 1; margin-block: 0; }
+        .illustration { grid-column: 2; grid-row: 1 / span 5; margin: 0; align-self: start; }
+        .illustration img { height: clamp(140px, 40dvh, 440px); }
+      }
+      @media (max-height: 500px) and (orientation: landscape) {
+        .app { gap: 4px; padding-top: calc(4px + env(safe-area-inset-top)); padding-bottom: calc(4px + env(safe-area-inset-bottom)); }
+        .exercise-card { padding: 12px; }
+        .control-panel { padding: 6px 10px; }
+        .control-title { margin-bottom: 4px; }
+        .timer-row { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr); }
+        .timer-note { display: none; }
+        .navigation { padding-top: 4px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -414,21 +505,20 @@
     </style>
   </head>
   <body>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.7 8.7 0 0 1 8.8 4a8.7 8.7 0 1 0 11.2 11.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </button>
-
-    <main class="app" aria-live="polite">
+    <main class="app">
       <div class="progress-head">
         <p class="step-label" id="stepLabel">Exercise 1 of 8</p>
         <button class="reset-all" id="resetAll" type="button">Reset session</button>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+          <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.2A8.7 8.7 0 0 1 8.8 4a8.7 8.7 0 1 0 11.2 11.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
       </div>
       <div class="progress-track" role="progressbar" aria-label="Exercise progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1">
         <div class="progress-fill" id="progressFill"></div>
       </div>
 
-      <article class="exercise-card">
+      <article class="exercise-card" tabindex="0" aria-labelledby="exerciseTitle">
         <p class="exercise-number" id="exerciseNumber">Exercise 01</p>
         <h1 id="exerciseTitle">Bunion correction</h1>
         <div class="dose" id="dose"></div>
@@ -438,6 +528,9 @@
         <p class="instructions" id="instructions"></p>
         <p class="cue" id="cue"></p>
 
+      </article>
+
+      <div class="exercise-dock">
         <section class="controls" aria-label="Exercise controls">
           <div class="control-grid" id="controlGrid">
             <div class="control-panel">
@@ -473,12 +566,13 @@
             </div>
           </div>
         </section>
-      </article>
 
       <nav class="navigation" aria-label="Exercise navigation">
         <button class="nav-button" id="prevButton" type="button">Previous</button>
         <button class="nav-button primary" id="nextButton" type="button">Next exercise</button>
       </nav>
+      <button class="install-button" id="installButton" type="button" hidden>Add to Home Screen</button>
+      </div>
     </main>
 
     <script>
@@ -549,6 +643,27 @@
         });
         var currentIndex = 0;
         var timerId = null;
+        var dayKey = new Date().toLocaleDateString('en-CA');
+        try {
+          var saved = JSON.parse(localStorage.getItem('physio1-session'));
+          if (saved && saved.day === dayKey && Array.isArray(saved.states) && saved.states.length === exercises.length) {
+            currentIndex = Number.isInteger(saved.index) ? Math.max(0, Math.min(exercises.length - 1, saved.index)) : 0;
+            states = exercises.map(function (exercise, index) {
+              var item = saved.states[index] || {};
+              var reps = Number.isInteger(item.reps) ? Math.max(0, Math.min(exercise.reps, item.reps)) : 0;
+              var set = Number.isInteger(item.set) ? Math.max(1, Math.min(exercise.sets, item.set)) : 1;
+              return { reps: reps, set: set, complete: reps === exercise.reps && set === exercise.sets, timer: exercise.hold, running: false };
+            });
+          }
+          var theme = localStorage.getItem('physio1-theme');
+          if (theme === 'dark' || theme === 'light') document.documentElement.setAttribute('data-theme', theme);
+        } catch (_) { /* Storage is optional in private browsing. */ }
+
+        function saveSession() {
+          try {
+            localStorage.setItem('physio1-session', JSON.stringify({ day: dayKey, index: currentIndex, states: states }));
+          } catch (_) { /* Exercise controls also work without storage. */ }
+        }
 
         var el = {
           themeToggle: document.getElementById('themeToggle'),
@@ -598,6 +713,7 @@
         el.themeToggle.addEventListener('click', function () {
           document.documentElement.setAttribute('data-theme', currentThemeIsDark() ? 'light' : 'dark');
           updateThemeControl();
+          try { localStorage.setItem('physio1-theme', document.documentElement.getAttribute('data-theme')); } catch (_) {}
         });
 
         if (window.matchMedia) {
@@ -640,6 +756,7 @@
         }
 
         function renderControls() {
+          saveSession();
           var exercise = exercises[currentIndex];
           var state = states[currentIndex];
           var setFinished = state.reps >= exercise.reps;
@@ -682,7 +799,7 @@
           el.progressTrack.setAttribute('aria-valuenow', String(number));
           el.prevButton.disabled = currentIndex === 0;
           el.nextButton.textContent = currentIndex === exercises.length - 1 ? 'Back to first' : 'Next exercise';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          document.querySelector('.exercise-card').scrollTop = 0;
         }
 
         el.repPlus.addEventListener('click', addRep);
@@ -744,6 +861,29 @@
           currentIndex = 0;
           render();
         });
+
+        var installPrompt = null;
+        var installButton = document.getElementById('installButton');
+        window.addEventListener('beforeinstallprompt', function (event) {
+          event.preventDefault();
+          installPrompt = event;
+          installButton.hidden = false;
+        });
+        installButton.addEventListener('click', async function () {
+          if (!installPrompt) return;
+          await installPrompt.prompt();
+          await installPrompt.userChoice;
+          installPrompt = null;
+          installButton.hidden = true;
+        });
+        window.addEventListener('appinstalled', function () { installButton.hidden = true; });
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/physio1-sw.js', { scope: '/physio1.html' }).catch(function (error) {
+              console.warn('Offline access unavailable:', error);
+            });
+          });
+        }
 
         render();
       }());

@@ -1,0 +1,26 @@
+{
+  "id": "/physio1.html",
+  "name": "Daily Physio Exercises",
+  "short_name": "Physio",
+  "description": "Your daily exercise routine, repetition counter and hold timer.",
+  "start_url": "/physio1.html",
+  "scope": "/physio1.html",
+  "display": "standalone",
+  "background_color": "#F4EDD8",
+  "theme_color": "#F4EDD8",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/physio1-assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/physio1-assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

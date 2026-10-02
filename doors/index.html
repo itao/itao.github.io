@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1eb">
+  <meta name="description" content="Compare and select door styles for the Whispering Pine build.">
+  <title>Whispering Pine · Door selections</title>
+  <link rel="preconnect" href="https://images.salsify.com">
+  <link rel="preconnect" href="https://test.renders.cdn.thermatru.com">
+  <style>
+    :root{--ink:#27302b;--muted:#707870;--paper:#f4f1eb;--card:#fffefa;--line:#deded4;--pine:#35594a;--pine-dark:#29473b;--sand:#eae5d9;--gold:#a77b35;--shadow:0 14px 40px rgba(39,48,43,.07)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.45}
+    button,input{font:inherit}
+    a{color:var(--pine-dark);text-decoration-thickness:1px;text-underline-offset:3px}
+    .wrap{max-width:1180px;margin:auto;padding:28px 26px 72px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:30px;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-mark{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--pine);color:white;font-size:14px;letter-spacing:0}
+    .project-tag{border:1px solid var(--line);border-radius:99px;padding:7px 12px;letter-spacing:.04em;text-transform:none}
+    .intro{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:28px;padding:16px 0 28px}
+    .eyebrow{color:var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,6vw,70px);line-height:.98;letter-spacing:-.045em;font-weight:500;margin:12px 0 14px;max-width:760px}
+    .intro p{color:#566058;max-width:620px;font-size:16px;margin:0}
+    .intro-note{border-left:2px solid var(--gold);padding:4px 0 4px 17px;color:#636c63;font-size:13px}
+    .selection-bar{position:sticky;top:10px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,254,250,.95);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:15px;padding:12px 16px;margin:0 0 42px;box-shadow:0 6px 24px rgba(39,48,43,.07)}
+    .selection-copy{min-width:0}.selection-copy strong{font-size:14px}.selection-copy span{display:block;color:var(--muted);font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .progress{font-variant-numeric:tabular-nums;color:var(--pine);font-weight:700;white-space:nowrap}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:34px 0 17px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+    .section-head h2{font:500 30px/1.05 Georgia,"Times New Roman",serif;letter-spacing:-.02em;margin:5px 0 0}
+    .section-head p{color:var(--muted);font-size:13px;margin:0;max-width:460px;text-align:right}
+    .door-card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:20px 21px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
+    .door-top{display:flex;justify-content:space-between;align-items:start;gap:18px;margin-bottom:16px}
+    .door-id{color:var(--gold);font-weight:750;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .door-title{font:500 23px/1.15 Georgia,"Times New Roman",serif;margin:5px 0 8px}
+    .facts{display:flex;flex-wrap:wrap;gap:7px}
+    .fact{font-size:11px;color:#59635c;background:#f0eee7;border-radius:99px;padding:5px 9px}
+    .detail{max-width:400px;color:#727a70;font-size:12px;text-align:right}
+    .group-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#788077;margin:22px 0 10px}
+    .choice-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .choice{position:relative;min-width:0}
+    .choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice label{display:block;height:100%;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:13px;overflow:hidden;transition:border-color .18s,box-shadow .18s,transform .18s}
+    .choice label:hover{transform:translateY(-2px);border-color:#a7b4a8}
+    .choice input:focus-visible+label{outline:3px solid #cfaa66;outline-offset:2px}
+    .choice input:checked+label{border:2px solid var(--pine);box-shadow:0 0 0 3px rgba(53,89,74,.11)}
+    .photo{height:190px;background:linear-gradient(135deg,#ece8dc,#d7d0c1);display:grid;place-items:center;overflow:hidden}
+    .photo img{display:block;width:100%;height:100%;object-fit:contain;padding:9px;mix-blend-mode:multiply}
+    .photo.missing{background:linear-gradient(145deg,#eeeae1,#dfd9cc);color:#70776e;text-align:center;font-size:12px;padding:18px}
+    .choice-body{padding:11px 12px 13px}
+    .choice-title-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .choice-code{font-size:15px;font-weight:750;letter-spacing:.03em}
+    .check{width:18px;height:18px;border:1px solid #c6cdc4;border-radius:50%;display:grid;place-items:center;color:transparent;font-size:11px;flex:0 0 auto}
+    .choice input:checked+label .check{background:var(--pine);border-color:var(--pine);color:white}
+    .choice-desc{font-size:12px;color:#687168;margin-top:3px;min-height:18px}
+    .product-link{display:inline-block;font-size:11px;margin-top:7px}
+    .subtle{font-size:12px;color:#737b72;background:#f7f5ef;border-radius:10px;padding:10px 12px;margin:14px 0 0}
+    .no-options{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f7f5ef;border-radius:12px;padding:15px 16px;color:#657066;font-size:13px}
+    .no-options strong{color:var(--ink)}
+    .source-note{font-size:11px;color:#81877e;margin-top:10px}
+    footer{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;color:#7c827a;font-size:11px;display:flex;justify-content:space-between;gap:18px}
+    @media(max-width:900px){.choice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.intro{grid-template-columns:1fr}.intro-note{max-width:600px}}
+    @media(max-width:640px){.wrap{padding:18px 14px 48px}header{margin-bottom:16px}.project-tag{font-size:11px}.intro{padding:20px 0 22px}.intro p{font-size:14px}.selection-bar{top:5px;margin-bottom:30px}.section-head{display:block}.section-head p{text-align:left;margin-top:8px}.door-card{padding:16px 13px 17px}.door-top{display:block}.detail{text-align:left;margin-top:10px}.choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:155px}.choice-body{padding:10px}.no-options{align-items:start;flex-direction:column}footer{display:block}footer span{display:block;margin-top:6px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">⌂</span><span>Whispering Pine · Build selections</span></div>
+      <span class="project-tag">67 Whispering Pine Circle</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <div class="eyebrow">Door style review</div>
+          <h1 id="page-title">Choose the look for each door.</h1>
+          <p>Compare the supplier’s style options against the door schedule. Pick a style separately for each slab door; the two sliding patio doors are shown below for reference.</p>
+        </div>
+        <div class="intro-note">Supplier style lists are shown as provided. Please confirm exact size, glass, handing, and garage-separation requirements with the supplier before ordering.</div>
+      </section>
+
+      <div class="selection-bar" aria-live="polite">
+        <div class="selection-copy"><strong>Your selections</strong><span id="summary">No styles selected yet</span></div>
+        <div class="progress" id="progress">0 / 6 selected</div>
+      </div>
+
+      <section aria-labelledby="main-entry-heading">
+        <div class="section-head">
+          <div><div class="eyebrow">42″ × 96″</div><h2 id="main-entry-heading">Main house entry</h2></div>
+          <p>The original 3 Panel Scroll-FC M slab is unavailable at this size. Compare the supplier’s Rustic Mahogany suggestions and modern Walnut Grain looks.</p>
+        </div>
+        <article class="door-card" data-door="D1">
+          <div class="door-top">
+            <div><div class="door-id">D1 · Main-house front entry</div><h3 class="door-title">South entry, with exterior-left sidelight</h3><div class="facts"><span class="fact">42″ × 96″ slab</span><span class="fact">No lite in slab on current schedule</span><span class="fact">In-swing · right hinge viewed outside</span></div></div>
+            <div class="detail">The permit’s red “Light” note conflicts with the current no-lite slab specification; confirm whether D1 should remain solid.</div>
+          </div>
+          <div class="group-label">Rustic Mahogany Grain · supplier choices</div>
+          <div class="choice-grid" id="rustic-main"></div>
+          <div class="group-label">Modern Walnut Grain · 8-foot styles</div>
+          <div class="choice-grid" id="walnut-main"></div>
+          <p class="subtle">The Walnut Grain cards are a visual starting point from Therma-Tru’s 42″ × 96″ catalog section. Confirm which exact Walnut style the supplier can provide for this slab and sidelight configuration.</p>
+        </article>
+      </section>
+
+      <section aria-labelledby="connection-heading">
+        <div class="section-head">
+          <div><div class="eyebrow">Style choices by door</div><h2 id="connection-heading">Garage & house connections</h2></div>
+          <p>The supplier lists the same Smooth-Star and Oak Grain style codes for D4–D8. Choose independently for each opening.</p>
+        </div>
+        <div id="connection-doors"></div>
+      </section>
+
+      <section aria-labelledby="sliding-heading">
+        <div class="section-head">
+          <div><div class="eyebrow">Reference only</div><h2 id="sliding-heading">Sliding patio doors</h2></div>
+          <p>These are sliding assemblies in the schedule; the supplier did not list slab style options for them.</p>
+        </div>
+        <article class="door-card">
+          <div class="no-options"><span><strong>D2 · Main-house dining to terrace</strong><br>168″ × 96″ lift-and-slide assembly · fixed left panel, operating right panel</span><span>No slab style choice listed</span></div>
+          <div class="no-options" style="margin-top:9px"><span><strong>D3 · Dining to screened porch</strong><br>72″ × 96″ two-panel slider · operating left panel, fixed right panel</span><span>No slab style choice listed</span></div>
+        </article>
+      </section>
+    </main>
+
+    <footer><span>Project details: Whisper Pine Build · Window door schedule in Notion</span><span>Product photos link to Therma-Tru style pages where available.</span></footer>
+  </div>
+  <script>
+    const rustic = [
+      {code:"CCR8110", desc:"8′ one-panel style", image:null, url:"https://cksidaho.com/wp-content/uploads/2010/08/09Catalog.pdf", label:"Archived catalog · page 29"},
+      {code:"CCR8205", desc:"2-panel plank · soft arch", image:"https://www.thermatru.com/globalassets/widen/home-images/classic-craft/home_ccr8205_solid-3_clavosstraps7.jpg", url:"https://www.thermatru.com/explore-products/door-style/CCR8205"},
+      {code:"CCR8225", desc:"2-panel plank · round top", image:"https://images.salsify.com/image/upload/s--IE4DiKuQ--/kl8xj3rs75fqx8qq2kxd.jpg?w=600", url:"https://www.thermatru.com/explore-products/door-style/CCR8225"},
+      {code:"CCR8040", desc:"4-panel · round top", image:"https://images.salsify.com/image/upload/s--Rxwi-6nA--/it4omhvrnjvggcd79yuw.jpg?w=600", url:"https://www.thermatru.com/explore-products/door-style/CCR8040"},
+      {code:"CCR8222", desc:"2-panel · square top", image:"https://images.salsify.com/image/upload/s--W52PJUFz--/ygz90wgvajutevzstfee.jpg?w=600", url:"https://www.thermatru.com/explore-products/door-style/CCR8222"}
+    ];
+    const walnut = [
+      {code:"CCW81000", desc:"8′ flush panel", image:"https://test.renders.cdn.thermatru.com/images/720712046.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/CCW81000"},
+      {code:"CCW8903", desc:"8′ 903 design", image:"https://images.salsify.com/image/upload/s--W4W31kUD--/ekrwqyr5paetxzsfgjoc.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/CCW8903"},
+      {code:"CCW8904R", desc:"8′ 904 design · right", image:"https://images.salsify.com/image/upload/s--TKI_xTB7--/efezyn01navqk60gdcqv.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/CCW8904R"}
+    ];
+    const supplierStyles = [
+      {code:"S100", desc:"Smooth fiberglass · flush panel", image:"https://images.salsify.com/image/upload/s--Z4FxC3OU--/t8niwgwffsreevz8rglu.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/S100", group:"Smooth fiberglass"},
+      {code:"S210", desc:"Smooth fiberglass · 6 panel", image:"https://images.salsify.com/image/upload/s--BibIHR9T--/m4iiazyved4xvrtwoxfl.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/S210", group:"Smooth fiberglass"},
+      {code:"S220", desc:"Smooth fiberglass · 2-panel square top", image:"https://images.salsify.com/image/upload/s--op01nKFm--/k12udxygojw5pq5r8k4k.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/S220", group:"Smooth fiberglass"},
+      {code:"1000", desc:"Oak Grain · flush panel", image:"https://test.renders.cdn.thermatru.com/images/1694960849.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/1000", group:"Wood grain · Oak"},
+      {code:"FC60", desc:"Oak Grain · 6 panel", image:"https://test.renders.cdn.thermatru.com/images/3199264314.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/FC60", group:"Wood grain · Oak"},
+      {code:"FCM1000", desc:"Mahogany Grain · flush panel", image:"https://test.renders.cdn.thermatru.com/images/201752020.jpg?w=500", url:"https://www.thermatru.com/explore-products/door-style/FCM1000", group:"Wood grain · Mahogany"}
+    ];
+    const doors = [
+      {id:"D4", title:"North garage pedestrian door", location:"Garage · Level 1 · north wall", size:"36″ × 84″", facts:["No lite in current order","Self-close / airtight called out in permit"],note:"The schedule audit flags the ordered swing and self-closing hardware for confirmation."},
+      {id:"D5", title:"ADU front entry", location:"ADU · Level 1 · south wall", size:"36″ × 96″", facts:["Clear tempered lite in current order","In-swing · left hinge viewed outside"],note:"Current schedule specifies clear glass. Confirm the selected style can retain the intended lite and exact 8-foot size."},
+      {id:"D6", title:"Garage stair to main-house basement", location:"Main house · Level 0", size:"36″ × 84″", facts:["No lite in current order","Self-close / airtight called out in permit"],note:"Current order includes self-closing hinges; confirm the final airtight garage-separation specification."},
+      {id:"D7", title:"Garage to ADU entry", location:"ADU · Level 1 · east wall", size:"36″ × 84″", facts:["No lite in current order","Self-close / airtight called out in permit"],note:"Keep this distinct from D8: D7 connects the garage to the ADU."},
+      {id:"D8", title:"Garage to main-house entry", location:"Main house · Level 1 · west wall", size:"36″ × 84″", facts:["No lite in current order","Self-close / airtight called out in permit"],note:"The schedule audit flags the swing direction for a face-labeled shop-drawing check."}
+    ];
+    const styleLabel = {"CCR8110":"Rustic Mahogany", "CCR8205":"Rustic Mahogany", "CCR8225":"Rustic Mahogany", "CCR8040":"Rustic Mahogany", "CCR8222":"Rustic Mahogany", "CCW81000":"Walnut Grain", "CCW8903":"Walnut Grain", "CCW8904R":"Walnut Grain", "S100":"Smooth fiberglass", "S210":"Smooth fiberglass", "S220":"Smooth fiberglass", "1000":"Oak Grain", "FC60":"Oak Grain", "FCM1000":"Mahogany Grain"};
+    function choiceCard(doorId,item){
+      const id=`${doorId}-${item.code.replace(/[^a-z0-9]/gi,"")}`;
+      const media=item.image?`<img src="${item.image}" alt="${item.code} Therma-Tru door style" loading="lazy" onerror="this.parentElement.classList.add('missing');this.remove();this.parentElement.textContent='Product image unavailable · open style page to view';">`:`<div class="photo missing">Photo not available in the current online listing<br><a href="${item.url}" target="_blank" rel="noreferrer">${item.label}</a></div>`;
+      return `<div class="choice"><input type="radio" id="${id}" name="pick-${doorId}" value="${item.code}" data-door="${doorId}" data-label="${styleLabel[item.code]||item.group||''}"><label for="${id}"><div class="photo">${media}</div><div class="choice-body"><div class="choice-title-row"><span class="choice-code">${item.code}</span><span class="check" aria-hidden="true">✓</span></div><div class="choice-desc">${item.desc}</div><a class="product-link" href="${item.url}" target="_blank" rel="noreferrer">View style details ↗</a></div></label></div>`;
+    }
+    document.querySelector('#rustic-main').innerHTML=rustic.map(item=>choiceCard('D1',item)).join('');
+    document.querySelector('#walnut-main').innerHTML=walnut.map(item=>choiceCard('D1',item)).join('');
+    document.querySelector('#connection-doors').innerHTML=doors.map(door=>`<article class="door-card" data-door="${door.id}"><div class="door-top"><div><div class="door-id">${door.id} · ${door.location}</div><h3 class="door-title">${door.title}</h3><div class="facts"><span class="fact">${door.size} nominal slab</span>${door.facts.map(f=>`<span class="fact">${f}</span>`).join('')}</div></div><div class="detail">${door.note}</div></div><div class="group-label">Smooth fiberglass · supplier choices</div><div class="choice-grid">${supplierStyles.filter(s=>s.group==='Smooth fiberglass').map(item=>choiceCard(door.id,item)).join('')}</div><div class="group-label">Wood grain · Oak · supplier choices</div><div class="choice-grid">${supplierStyles.filter(s=>s.group==='Wood grain · Oak').map(item=>choiceCard(door.id,item)).join('')}</div><div class="group-label">Wood grain · Mahogany · supplier choice</div><div class="choice-grid">${supplierStyles.filter(s=>s.group==='Wood grain · Mahogany').map(item=>choiceCard(door.id,item)).join('')}</div><p class="source-note">The supplier named these six styles for D4–D8. Confirm exact size and configuration for this opening before ordering.</p></article>`).join('');
+    const watched=['D1','D4','D5','D6','D7','D8'];
+    function updateSummary(){
+      const picks=new Map([...document.querySelectorAll('input[type=radio]:checked')].map(i=>[i.dataset.door,{code:i.value,label:i.dataset.label}]));
+      document.querySelector('#progress').textContent=`${picks.size} / ${watched.length} selected`;
+      document.querySelector('#summary').textContent=picks.size?[...picks].map(([door,p])=>`${door}: ${p.code}`).join(' · '):'No styles selected yet';
+    }
+    document.addEventListener('change',event=>{if(event.target.matches('input[type=radio]'))updateSummary()});
+  </script>
+</body>
+</html>

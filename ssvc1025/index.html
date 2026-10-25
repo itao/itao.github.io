@@ -55,7 +55,7 @@
       <table>
         <tr><th>Game</th><th>Linesperson</th><th>Scorekeeper</th></tr>
         <tr><td>Match 1 · Caspian</td><td>Parent of Bhavya</td><td>Joel (Allie)</td></tr>
-        <tr><td>Match 2 · EVP</td><td>Parent of Ava</td><td>Jeanette (Ray)</td></tr>
+        <tr><td>Match 2 · EVP</td><td>Claire (Ava)</td><td>Jeanette (Ray)</td></tr>
         <tr><td>Match 3 · Georgina</td><td>Calvin (Amelia)</td><td>Will (Adelaide)</td></tr>
         <tr><td>Match 4 · Barrie</td><td>Nathalie (Molly)</td><td>Alina’s mom</td></tr>
       </table>
@@ -163,7 +163,7 @@ try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved&&typeof s
 function save(){try{localStorage.setItem(key,JSON.stringify(state));root.querySelector('#score-status').textContent='Saved on this device · not shared';}catch(e){root.querySelector('#score-status').textContent='Storage unavailable. Scores last only while this page stays open.';}}
 root.querySelectorAll('input.score').forEach(input=>{const id=input.getAttribute('aria-label');input.maxLength=3;input.pattern='[0-9]{1,3}';input.autocomplete='off';const value=state.scores[id];input.value=typeof value==='string'&&/^\d{0,3}$/.test(value)?value:'';input.addEventListener('input',()=>{input.value=input.value.replace(/\D/g,'').slice(0,3);state.scores[id]=input.value;save();});});
 root.dataset.theme=state.theme;root.querySelector('.theme-switch').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';root.dataset.theme=state.theme;save();});
-const matches=[['Caspian Velocity',1,1,'10:00 AM','Parent of Bhavya','Joel (Allie)'],['EVP Eagles Charge',3,2,'Time depends on earlier matches','Parent of Ava','Jeanette (Ray)'],['Georgina Riptide Waves',5,2,'Time depends on earlier matches','Calvin (Amelia)','Will (Adelaide)'],['Barrie Elites Attack',6,2,'Time depends on earlier matches','Nathalie (Molly)','Alina’s mom']];
+const matches=[['Caspian Velocity',1,1,'10:00 AM','Parent of Bhavya','Joel (Allie)'],['EVP Eagles Charge',3,2,'Time depends on earlier matches','Claire (Ava)','Jeanette (Ray)'],['Georgina Riptide Waves',5,2,'Time depends on earlier matches','Calvin (Amelia)','Will (Adelaide)'],['Barrie Elites Attack',6,2,'Time depends on earlier matches','Nathalie (Molly)','Alina’s mom']];
 const dialog=root.querySelector('dialog');root.querySelectorAll('[data-match]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.match),m=matches[i];root.querySelector('#detail-content').innerHTML='<h2 id="detail-title">Match '+(i+1)+' · vs. '+m[0]+'</h2><p><strong>Round '+m[1]+' · Court '+m[2]+'</strong><br>'+m[3]+'</p><div class="detail-duties"><p><strong>Linesperson</strong><br>'+m[4]+'</p><p><strong>Scorekeeper</strong><br>'+m[5]+'</p></div><p class="hint">'+(i===2?'Next: Round 6, Court 2 — back-to-back.':i===0?'Next Kraken match: Round 3, Court 2.':i===1?'Next Kraken match: Round 5, Court 2.':'Playoffs follow once the bracket is confirmed.')+'</p>';dialog.showModal();}));root.querySelector('.detail-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 })();
 

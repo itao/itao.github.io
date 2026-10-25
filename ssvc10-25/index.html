@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F4EDD8"><title>Kraken · October 25 tournament</title><style>body{margin:0;background:#F4EDD8}#kraken-mobile{min-height:100vh}</style></head><body><div id="kraken-mobile"  data-theme="light">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
+#kraken-mobile{--page:#F4EDD8;--surface:#FDFAF2;--text:#2E2418;--muted:#665b4d;--line:#cfc5ae;--accent:#4E7A42;--highlight:#e3ebd7;--accent-text:#36582d;--info:#4A7A94;background:var(--page);color:var(--text);font:400 16px/1.45 'DM Sans',sans-serif;color-scheme:light;position:relative}
+#kraken-mobile[data-theme="dark"]{--page:#1C1810;--surface:#252018;--text:#EDE9D8;--muted:#c0baa8;--line:#554d3d;--accent:#97B893;--highlight:#34412d;--accent-text:#c2ddb6;--info:#8AACBF;color-scheme:dark}
+#kraken-mobile *{box-sizing:border-box}#kraken-mobile [hidden]{display:none!important}
+#kraken-mobile header{text-align:center;padding:20px 48px 16px;border-bottom:1px solid var(--line);position:relative}
+#kraken-mobile header h1{font:400 28px/1.12 'DM Serif Display',Georgia,serif;margin:0 0 8px}#kraken-mobile header p{margin:4px 0;font-size:15px}#kraken-mobile header .sub{font-size:13px;color:var(--muted)}
+#kraken-mobile .theme-switch{position:absolute;right:8px;top:12px;min-height:44px;min-width:44px;border:0;background:transparent;color:var(--text);border-radius:8px;display:grid;place-items:center}
+#kraken-mobile main{max-width:760px;margin:auto;padding:14px 12px calc(100px + env(safe-area-inset-bottom))}
+#kraken-mobile .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;margin:0 0 14px}
+#kraken-mobile h2{font-size:20px;line-height:1.25;font-weight:500;color:var(--accent);margin:0 0 10px}#kraken-mobile h3{font-size:17px;font-weight:500;color:var(--accent);margin:18px 0 8px}#kraken-mobile p{margin:8px 0}
+#kraken-mobile table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px;line-height:1.35}#kraken-mobile th,#kraken-mobile td{border:1px solid var(--line);padding:8px 5px;text-align:center;overflow-wrap:break-word;vertical-align:middle}
+#kraken-mobile th{background:var(--highlight);color:var(--accent-text);font-weight:500}#kraken-mobile .pool-table th:first-child{width:17%}#kraken-mobile td.kraken{background:var(--highlight);color:var(--accent-text);font-weight:700;padding:0}
+#kraken-mobile .match-tap{width:100%;min-height:52px;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;padding:8px 5px;text-align:center;cursor:pointer}#kraken-mobile .pool-note{font-size:13px;color:var(--muted);margin:8px 0 16px}
+#kraken-mobile ul{margin:6px 0;padding-left:22px}#kraken-mobile li{margin:8px 0}#kraken-mobile .hint{font-size:14px;color:var(--muted)}
+#kraken-mobile .court{margin:0 0 18px}#kraken-mobile .court th.net{color:var(--accent-text);letter-spacing:.08em;padding:9px 8px}#kraken-mobile .court td{padding:12px 3px;font-size:15px}#kraken-mobile .court .server{background:var(--highlight);font-weight:500}#kraken-mobile .position{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}#kraken-mobile .server-label{display:block;font-size:12px;color:var(--accent-text);margin-top:4px}
+#kraken-mobile input.score{width:100%;max-width:80px;min-height:46px;font:400 18px 'DM Sans',sans-serif;text-align:center;padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:var(--page);color:var(--text)}
+#kraken-mobile button:focus-visible,#kraken-mobile input:focus-visible,#kraken-mobile summary:focus-visible{outline:3px solid var(--info);outline-offset:2px}
+#kraken-mobile nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+#kraken-mobile nav.tabs button{flex:1;min-width:0;min-height:70px;border:0;border-top:3px solid transparent;background:transparent;padding:10px 2px;color:var(--muted);font:500 13px 'DM Sans',sans-serif;cursor:pointer}#kraken-mobile nav.tabs .ico{display:flex;justify-content:center;margin-bottom:5px}#kraken-mobile nav.tabs button.active{color:var(--accent);border-top-color:var(--accent);background:var(--highlight)}
+#kraken-mobile svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}#kraken-mobile footer{text-align:center;color:var(--muted);font-size:13px;padding:12px 0}#kraken-mobile details{margin-top:18px}#kraken-mobile summary{min-height:44px;padding:10px 0;cursor:pointer;color:var(--accent)}
+#kraken-mobile .match-detail{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);padding:20px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;margin:auto}#kraken-mobile .match-detail::backdrop{background:rgba(28,24,16,.5)}#kraken-mobile .match-detail h2{padding-right:28px}#kraken-mobile .detail-close{float:right;min-height:44px;min-width:44px;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}#kraken-mobile .detail-duties{border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
+#kraken-mobile.preview-phone{height:800px;max-height:90vh;min-height:560px;display:flex;flex-direction:column;overflow:hidden;border-radius:14px}#kraken-mobile.preview-phone .mobile-scroll{min-height:0;overflow-y:auto;flex:1}#kraken-mobile.preview-phone main{padding-bottom:20px}#kraken-mobile.preview-phone nav.tabs{position:relative;flex-shrink:0;padding-bottom:0}#kraken-mobile.preview-phone .match-detail{position:absolute}
+@media(max-width:360px){#kraken-mobile header h1{font-size:25px}#kraken-mobile main{padding-left:8px;padding-right:8px}#kraken-mobile .card{padding:14px 8px}#kraken-mobile th,#kraken-mobile td{padding:7px 4px}#kraken-mobile .court td{font-size:14px}}
+
+</style>
+<div class="mobile-scroll">
+<header>
+  <button class="theme-switch" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button><h1>Southern Shores Kraken</h1>
+  <p>13U Girls — MYVB Tournament</p>
+  <p class="sub">Sunday, October 25, 2026 · Pool A, Team #4</p>
+</header>
+
+<main>
+  <!-- ============ SCHEDULE TAB ============ -->
+  <section id="tab-schedule" role="tabpanel" aria-labelledby="btn-schedule">
+    <div class="card">
+      <h2> Full Pool A schedule</h2>
+      <table class="pool-table">
+        <tr><th>Round</th><th>Court 1</th><th>Court 2</th></tr>
+        <tr><td>1</td><td class="kraken"><button type="button" class="match-tap" data-match="0" aria-label="Match 1 details: Kraken vs. Caspian Velocity">vs. Caspian Velocity</button></td><td>Barrie Elites Attack vs. Georgina Riptide Waves</td></tr>
+        <tr><td>2</td><td>Caspian Velocity vs. EVP Eagles Charge</td><td>Lakeside Shoka vs. Georgina Riptide Waves</td></tr>
+        <tr><td>3</td><td>Barrie Elites Attack vs. Lakeside Shoka</td><td class="kraken"><button type="button" class="match-tap" data-match="1" aria-label="Match 2 details: Kraken vs. EVP Eagles Charge">vs. EVP Eagles Charge</button></td></tr>
+        <tr><td>4</td><td>Caspian Velocity vs. Barrie Elites Attack</td><td>EVP Eagles Charge vs. Georgina Riptide Waves</td></tr>
+        <tr><td>5</td><td>Caspian Velocity vs. Lakeside Shoka</td><td class="kraken"><button type="button" class="match-tap" data-match="2" aria-label="Match 3 details: Kraken vs. Georgina Riptide Waves">vs. Georgina Riptide Waves</button></td></tr>
+        <tr><td>6</td><td>Lakeside Shoka vs. EVP Eagles Charge</td><td class="kraken"><button type="button" class="match-tap" data-match="3" aria-label="Match 4 details: Kraken vs. Barrie Elites Attack">vs. Barrie Elites Attack</button></td></tr>
+        <tr><td>Playoffs</td><td>2nd vs. 3rd · 1st vs. Winner</td><td>5th vs. 6th · 4th vs. Winner</td></tr>
+      </table>
+      <p class="pool-note">Highlighted cells = Kraken on court. Rounds 2 &amp; 4 are breaks; rounds 5 &amp; 6 are back-to-back. Tap a highlighted match for details.</p><h3>Parent duties</h3>
+      <p style="margin-top:0;">To swap a duty, arrange a replacement and let a coach know.</p>
+      <table>
+        <tr><th>Game</th><th>Linesperson</th><th>Scorekeeper</th></tr>
+        <tr><td>Match 1 · Caspian</td><td>Parent of Bhavya</td><td>Joel (Allie)</td></tr>
+        <tr><td>Match 2 · EVP</td><td>Jeanette (Ray)</td><td>Parent of Ava</td></tr>
+        <tr><td>Match 3 · Georgina</td><td>Calvin (Amelia)</td><td>Will (Adelaide)</td></tr>
+        <tr><td>Match 4 · Barrie</td><td>Nathalie (Molly)</td><td>Anna (Alexandra)</td></tr>
+      </table>
+      <p class="hint" style="margin-bottom:0;">Backup volunteers: Tara (Laveah), Parent of Alina, Parent of Hannah. Playoff volunteer slots will be filled once the bracket is set.</p>
+    </div>
+  </section>
+
+  <!-- ============ ROSTER TAB ============ -->
+  <section id="tab-roster" role="tabpanel" aria-labelledby="btn-roster" hidden>
+    <div class="card">
+      <h2> Practice squad lineups</h2>
+      <p style="margin-top:0;">Our side, facing the net. Front row nearest the net; back row behind. Position 1 starts serving. Everyone rotates through all six spots. These are practice squads — today we play as one Kraken team.</p>
+      <h3>Team A</h3>
+      <table class="court">
+        <tr><th class="net" colspan="3"> NET · FACING FORWARD</th></tr>
+        <tr><td><span class="position">4 · Front</span>Laveah</td><td><span class="position">3 · Front</span>Alina</td><td><span class="position">2 · Front</span>Ava</td></tr>
+        <tr><td><span class="position">5 · Back</span>Hannah</td><td><span class="position">6 · Back</span>Molly</td><td class="server"><span class="position">1 · Back</span>Alexandra<span class="server-label">Starts serving</span></td></tr>
+      </table>
+      <h3>Team B</h3>
+      <table class="court">
+        <tr><th class="net" colspan="3"> NET · FACING FORWARD</th></tr>
+        <tr><td><span class="position">4 · Front</span>Adelaide</td><td><span class="position">3 · Front</span>Allie</td><td><span class="position">2 · Front</span>Ray</td></tr>
+        <tr><td><span class="position">5 · Back</span>Mackenzie</td><td><span class="position">6 · Back</span>Bhavya</td><td class="server"><span class="position">1 · Back</span>Amelia<span class="server-label">Starts serving</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ RULES TAB ============ -->
+  <section id="tab-rules" role="tabpanel" aria-labelledby="btn-rules" hidden>
+    <div class="card">
+      <h2> Format &amp; rules</h2>
+      <ul>
+        <li><b>Fair play, triple ball</b></li>
+        <li><b>Pool play:</b> 2 sets to 25 points, win by 2</li>
+        <li><b>Playoffs:</b> best of 3 sets to 25, third set to 15, win by 2</li>
+        <li><b>Warm-ups:</b> 5–5 for the first set of matches, then 3–3 — starting immediately when the previous match ends</li>
+        <li><b>Each team supplies a linesperson &amp; scorekeeper for every match</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SCORES TAB ============ -->
+  <section id="tab-scores" role="tabpanel" aria-labelledby="btn-scores" hidden>
+    <div class="card">
+      <h2>My scores</h2><p id="score-status" class="hint" role="status">Scores save on this device.</p>
+      <p style="margin-top:0;">Personal scores, only visible on this device. They save automatically after refresh and don’t sync to other families.</p>
+      <h3>Match 1 — vs Caspian Velocity (Court 1, 10:00 AM)</h3>
+      <table>
+        <tr><th></th><th>Kraken</th><th>Opponent</th></tr>
+        <tr><td><b>Set 1</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 1 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 1 set 1 opponent score"></td></tr>
+        <tr><td><b>Set 2</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 1 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 1 set 2 opponent score"></td></tr>
+      </table>
+      <h3>Match 2 — vs EVP Eagles Charge (Court 2)</h3>
+      <table>
+        <tr><th></th><th>Kraken</th><th>Opponent</th></tr>
+        <tr><td><b>Set 1</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 2 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 2 set 1 opponent score"></td></tr>
+        <tr><td><b>Set 2</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 2 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 2 set 2 opponent score"></td></tr>
+      </table>
+      <h3>Match 3 — vs Georgina Riptide Waves (Court 2)</h3>
+      <table>
+        <tr><th></th><th>Kraken</th><th>Opponent</th></tr>
+        <tr><td><b>Set 1</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 3 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 3 set 1 opponent score"></td></tr>
+        <tr><td><b>Set 2</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 3 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 3 set 2 opponent score"></td></tr>
+      </table>
+      <h3>Match 4 — vs Barrie Elites Attack (Court 2)</h3>
+      <table>
+        <tr><th></th><th>Kraken</th><th>Opponent</th></tr>
+        <tr><td><b>Set 1</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 4 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 4 set 1 opponent score"></td></tr>
+        <tr><td><b>Set 2</b></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 4 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Match 4 set 2 opponent score"></td></tr>
+      </table>
+      <p class="hint" style="margin-bottom:0;">Playoffs are best of three. Use the sheets below if Kraken plays in those rounds.</p>
+    </div>
+
+    <details><summary>Playoff score sheets</summary><h3>Playoff match 1</h3><p class="hint">Opponent &amp; court to be confirmed · third set if needed.</p><table><tr><th>Set</th><th>Kraken</th><th>Opponent</th></tr><tr><td>1</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 1 opponent score"></td></tr><tr><td>2</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 2 opponent score"></td></tr><tr><td>3</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 3 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 1 set 3 opponent score"></td></tr></table><h3>Playoff match 2</h3><p class="hint">Opponent &amp; court to be confirmed · third set if needed.</p><table><tr><th>Set</th><th>Kraken</th><th>Opponent</th></tr><tr><td>1</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 1 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 1 opponent score"></td></tr><tr><td>2</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 2 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 2 opponent score"></td></tr><tr><td>3</td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 3 Kraken score"></td><td><input class="score" type="text" inputmode="numeric" aria-label="Playoff 2 set 3 opponent score"></td></tr></table></details><footer>Go Kraken! · Coaches Rebecca &amp; Ian</footer>
+  </section>
+</main>
+
+</div><nav class="tabs" role="tablist" aria-label="Tournament pages">
+  <button type="button" id="btn-schedule" role="tab" aria-controls="tab-schedule" class="active" aria-selected="true"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h2M14 15h2"/></svg></span>Schedule</button>
+  <button type="button" id="btn-roster" role="tab" aria-controls="tab-roster" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 15a5 5 0 0 1 3 5"/></svg></span>Lineups</button>
+  <button type="button" id="btn-rules" role="tab" aria-controls="tab-rules" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v16M12 5C8 3 5 3 2 4v15c3-1 6-1 10 2 4-3 7-3 10-2V4c-3-1-6-1-10 1Z"/></svg></span>Rules</button>
+  <button type="button" id="btn-scores" role="tab" aria-controls="tab-scores" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 16h6"/></svg></span>Scores</button>
+</nav>
+
+<dialog class="match-detail" aria-labelledby="detail-title"><button type="button" class="detail-close" aria-label="Close match details">×</button><div id="detail-content"></div></dialog>
+<script>
+(function(){
+const root=document.getElementById('kraken-mobile');
+const tabs=Array.from(root.querySelectorAll('nav.tabs button'));
+function showTab(tab){
+  tabs.forEach(b=>{const active=b===tab;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;root.querySelector('#'+b.getAttribute('aria-controls')).hidden=!active;});
+  root.querySelector('.mobile-scroll').scrollTop=0;
+  if(!root.classList.contains('preview-phone'))window.scrollTo(0,0);
+}
+tabs.forEach((b,index)=>{b.tabIndex=index===0?0:-1;b.addEventListener('click',()=>showTab(b));b.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(index+1)%tabs.length;if(e.key==='ArrowLeft')n=(index+tabs.length-1)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n!==undefined){e.preventDefault();showTab(tabs[n]);tabs[n].focus();}});});
+const key='taoian-kraken-2026-10-25-mobile';let state={scores:{},theme:'light'};
+try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved&&typeof saved==='object'){if(saved.scores&&typeof saved.scores==='object')state.scores=saved.scores;if(saved.theme==='dark')state.theme='dark';}}catch(e){root.querySelector('#score-status').textContent='Storage unavailable. Scores last only while this page stays open.';}
+function save(){try{localStorage.setItem(key,JSON.stringify(state));root.querySelector('#score-status').textContent='Saved on this device · not shared';}catch(e){root.querySelector('#score-status').textContent='Storage unavailable. Scores last only while this page stays open.';}}
+root.querySelectorAll('input.score').forEach(input=>{const id=input.getAttribute('aria-label');input.maxLength=3;input.pattern='[0-9]{1,3}';input.autocomplete='off';const value=state.scores[id];input.value=typeof value==='string'&&/^\d{0,3}$/.test(value)?value:'';input.addEventListener('input',()=>{input.value=input.value.replace(/\D/g,'').slice(0,3);state.scores[id]=input.value;save();});});
+root.dataset.theme=state.theme;root.querySelector('.theme-switch').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';root.dataset.theme=state.theme;save();});
+const matches=[['Caspian Velocity',1,1,'10:00 AM','Parent of Bhavya','Joel (Allie)'],['EVP Eagles Charge',3,2,'Time depends on earlier matches','Jeanette (Ray)','Parent of Ava'],['Georgina Riptide Waves',5,2,'Time depends on earlier matches','Calvin (Amelia)','Will (Adelaide)'],['Barrie Elites Attack',6,2,'Time depends on earlier matches','Nathalie (Molly)','Anna (Alexandra)']];
+const dialog=root.querySelector('dialog');root.querySelectorAll('[data-match]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.match),m=matches[i];root.querySelector('#detail-content').innerHTML='<h2 id="detail-title">Match '+(i+1)+' · vs. '+m[0]+'</h2><p><strong>Round '+m[1]+' · Court '+m[2]+'</strong><br>'+m[3]+'</p><div class="detail-duties"><p><strong>Linesperson</strong><br>'+m[4]+'</p><p><strong>Scorekeeper</strong><br>'+m[5]+'</p></div><p class="hint">'+(i===2?'Next: Round 6, Court 2 — back-to-back.':i===0?'Next Kraken match: Round 3, Court 2.':i===1?'Next Kraken match: Round 5, Court 2.':'Playoffs follow once the bracket is confirmed.')+'</p>';dialog.showModal();}));root.querySelector('.detail-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+})();
+
+</script>
+</div>
+</body></html>

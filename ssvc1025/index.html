@@ -24,6 +24,8 @@
 #kraken-mobile.preview-phone{height:800px;max-height:90vh;min-height:560px;display:flex;flex-direction:column;overflow:hidden;border-radius:14px}#kraken-mobile.preview-phone .mobile-scroll{min-height:0;overflow-y:auto;flex:1}#kraken-mobile.preview-phone main{padding-bottom:20px}#kraken-mobile.preview-phone nav.tabs{position:relative;flex-shrink:0;padding-bottom:0}#kraken-mobile.preview-phone .match-detail{position:absolute}
 @media(max-width:360px){#kraken-mobile header h1{font-size:25px}#kraken-mobile main{padding-left:8px;padding-right:8px}#kraken-mobile .card{padding:14px 8px}#kraken-mobile th,#kraken-mobile td{padding:7px 4px}#kraken-mobile .court td{font-size:14px}}
 
+
+#kraken-mobile .tournament-picker{max-width:760px;margin:12px auto 0;padding:0 12px}#kraken-mobile .tournament-picker label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}#kraken-mobile .tournament-picker select{width:100%;font:500 16px 'DM Sans',sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--line);padding:12px;border-radius:10px;min-height:48px}#kraken-mobile[data-tournament="oct25"] .season-panel{display:none}#kraken-mobile:not([data-tournament="oct25"]) #tab-schedule>.card,#kraken-mobile:not([data-tournament="oct25"]) #tab-roster>.card,#kraken-mobile:not([data-tournament="oct25"]) #tab-rules>.card,#kraken-mobile:not([data-tournament="oct25"]) #tab-scores>.card,#kraken-mobile:not([data-tournament="oct25"]) #tab-scores>details{display:none}#kraken-mobile .season-panel .status{font-size:13px;color:var(--muted)}#kraken-mobile .season-panel a{color:var(--accent-text);text-decoration:underline}#kraken-mobile .season-panel .info-list{padding-left:20px}#kraken-mobile .season-panel .info-list li{margin:10px 0}
 </style>
 <div class="mobile-scroll">
 <header>
@@ -31,7 +33,7 @@
   <p>13U Girls — MYVB Tournament</p>
   <p class="sub">Sunday, October 25, 2026 · Pool A, Team #4</p>
 </header>
-
+<div class="tournament-picker"><label for="season-tournament">Choose tournament · 2026–27 season</label><select id="season-tournament" aria-label="Select Kraken tournament"><option value="oct25">Oct 25 · Keswick (past)</option><option value="nov08" selected>Nov 8 · Guelph (confirmed)</option><option value="nov28">Nov 28 · OVA Provincial Cup (venue TBD)</option><option value="jan09">Jan 9–10 · OVA tournament (day TBD)</option><option value="jan23">Jan 23 · Southern Shores tournament</option><option value="jan30">Jan 30–31 · OVA tournament (day TBD)</option><option value="feb27">Feb 27–28 · OVA tournament (day TBD)</option><option value="apr08">Apr 8–10 · Ontario Provincials</option></select></div>
 <main>
   <!-- ============ SCHEDULE TAB ============ -->
   <section id="tab-schedule" role="tabpanel" aria-labelledby="btn-schedule">
@@ -173,4 +175,36 @@ const dialog=root.querySelector('dialog');root.querySelectorAll('[data-match]').
 
 </script>
 </div>
-</body></html>
+<script>
+(function(){
+const root=document.getElementById('kraken-mobile'),select=document.getElementById('season-tournament');
+const standings='https://docs.google.com/spreadsheets/d/1WqTn4M4UKAjdYz7Sn7dhy2l6zHDL58YNT4KBgZe_Dl8/edit?usp=sharing';
+const tournamentData={
+nov08:{date:'Sunday, November 8, 2026',place:'Guelph · Our Lady of Lourdes Catholic High School',address:'54 Westmount Rd., Guelph, ON N1H 5H7',confirmed:true},
+nov28:{date:'Saturday, November 28, 2026',place:'First OVA tournament · venue not yet verified',confirmed:true},
+jan09:{date:'January 9 or 10, 2027',place:'Second OVA tournament · date and venue pending',confirmed:false},
+jan23:{date:'Saturday, January 23, 2027',place:'Southern Shores tournament · Bourgeois Community Centre',confirmed:true},
+jan30:{date:'January 30 or 31, 2027',place:'Third OVA tournament · date and venue pending',confirmed:false},
+feb27:{date:'February 27 or 28, 2027',place:'Fourth OVA tournament · date and venue pending',confirmed:false},
+apr08:{date:'April 8–10, 2027',place:'Ontario Provincials · RIM Park, Waterloo',confirmed:true}
+};
+const tabs=['schedule','roster','rules','scores'],panels={};
+tabs.forEach(id=>{const s=root.querySelector('#tab-'+id),p=document.createElement('div');p.className='season-panel';s.prepend(p);panels[id]=p;});
+const roster=['Adelaide','Alexandra','Alina','Allie','Amelia','Ava','Bhavya','Hannah','Laveah','Mackenzie','Molly','Ray'];
+function render(){
+const id=select.value;root.dataset.tournament=id;
+if(id==='oct25'){root.querySelector('header p').textContent='13U Girls — MYVB Tournament';root.querySelector('header .sub').textContent='Sunday, October 25, 2026 · Pool A, Team #4';document.title='Kraken · October 25 tournament';return;}
+const t=tournamentData[id];root.querySelector('header p').textContent='13U Girls · 2026–27 Tournament Season';root.querySelector('header .sub').textContent=t.date+' · '+t.place;document.title='Kraken · '+t.date;
+const isNov=id==='nov08',status=isNov?'Confirmed from coaches’ October 28 email':t.confirmed?'Listed in coaches’ October 18 season announcement':'Date and location are provisional';
+const rows=isNov?'<tr><th>Time</th><th>Activity</th></tr><tr><td>8:15 AM</td><td>Doors open</td></tr><tr><td>9:00 AM</td><td>First matches begin</td></tr><tr><td>Later</td><td>4 round-robin matches, then 1 placement/playoff match. Exact Kraken match slots: see live schedule.</td></tr>':'<tr><th>Time</th><th>Activity</th></tr><tr><td>TBD</td><td>Game times, opponents and courts to be announced.</td></tr>';
+const link=isNov?'<p><a href="'+standings+'" target="_blank" rel="noopener noreferrer">Open live schedule &amp; standings ↗</a></p>':'';
+panels.schedule.innerHTML='<div class="card"><h2>'+t.date+'</h2><p><strong>'+t.place+'</strong></p><p class="status">'+status+'</p>'+(isNov?'<p><a href="https://www.google.com/maps/search/?api=1&query=54+Westmount+Rd+Guelph+ON" target="_blank" rel="noopener noreferrer">54 Westmount Rd., Guelph · Directions ↗</a></p><p>Use the north parking lot and enter through the north-side main entrance.</p>':'')+'<h3>Game-day schedule</h3><table>'+rows+'</table>'+link+'<p class="hint">Times after the opening match may shift. Follow event officials and the live schedule.</p></div><div class="card"><h2>Parent duties</h2><p>One scorekeeper and one linesperson are required for every match. Assignments to be confirmed with coaches.</p></div>';
+panels.roster.innerHTML='<div class="card"><h2>Kraken roster</h2><p class="hint">Season roster names carried forward from the October 25 page. Attendance and starting lineups for this tournament are not confirmed.</p><ul class="info-list">'+roster.map(n=>'<li>'+n+'</li>').join('')+'</ul><h3>Starting lineups</h3><p>Coaches Rebecca and Ian will announce court positions and substitutions on tournament day.</p></div>';
+panels.rules.innerHTML=isNov?'<div class="card"><h2>Format &amp; rules · November 8</h2><ul class="info-list"><li>Four round-robin matches: two sets to 25, no cap.</li><li>One placement match: best two of three sets.</li><li>First match warm-up: 2–4–4. Later matches: 2 minutes on court, without serving or hitting.</li><li>Rankings based on sets won; tournament tiebreakers apply.</li><li>Each team provides a scorekeeper and linesperson.</li><li>No balls outside the gym; stay in designated areas.</li></ul></div>':'<div class="card"><h2>Format &amp; rules</h2><p>Tournament-specific rules have not yet been published. Refer to the event organizer when available.</p></div>';
+panels.scores.innerHTML='<div class="card"><h2>Scores &amp; results</h2><p>'+ (isNov?'Use the official live standings to follow round-robin and placement results.':'Results and live standings will be added when published.')+'</p>'+link+'</div>';
+try{const u=new URL(location.href);u.searchParams.set('event',id);history.replaceState(null,'',u);}catch(e){}
+}
+const requested=new URLSearchParams(location.search).get('event');if(requested==='oct25'||tournamentData[requested])select.value=requested;
+select.addEventListener('change',render);render();
+})();
+</script></body></html>

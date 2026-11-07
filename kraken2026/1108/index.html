@@ -75,7 +75,7 @@
         <tr><td>Match 1 · Georgetown</td><td>Tana (Hannah)</td><td>Joel (Allie)</td></tr>
         <tr><td>Match 2 · Waterloo</td><td>Claire (Ava)</td><td>Jeanette (Ray)</td></tr>
         <tr><td>Match 3 · Guelph</td><td>Calvin (Amelia)</td><td>Will (Adelaide)</td></tr>
-        <tr><td>Match 4 · St. Thomas</td><td>Nathalie (Molly)</td><td>Lejla (Alina)</td></tr>
+        <tr><td>Match 4 · St. Thomas</td><td>Rob (Molly)</td><td>Lejla (Alina)</td></tr>
       </table>
       <p class="hint" style="margin-bottom:0;">Backup volunteer: Tara (Laveah). Playoff volunteer slots will be filled once the bracket is set.</p>
     <p class="hint">Flip the score cards and tick points on a tally sheet. No official OVA scoresheets or scoresheet experience needed.</p></div>
@@ -122,7 +122,7 @@ const key='taoian-kraken-2026-11-08-mobile';let state={scores:{},theme:'light'};
 try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved&&typeof saved==='object'){if(saved.scores&&typeof saved.scores==='object')state.scores=saved.scores;if(saved.theme==='dark')state.theme='dark';}}catch(e){root.querySelector('#score-status').textContent='Theme preference cannot be saved on this device.';}
 function save(){try{localStorage.setItem(key,JSON.stringify({theme:state.theme}));}catch(e){}}
 root.dataset.theme=state.theme;root.querySelector('.theme-switch').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';root.dataset.theme=state.theme;save();});
-const matches=[["Georgetown Impact", 2, 1, "10:00 a.m.", "Tana (Hannah)", "Joel (Allie)"], ["Waterloo Tigers Pounce", 3, 1, "10:50 a.m.", "Claire (Ava)", "Jeanette (Ray)"], ["Guelph Gryphons Gold Rush", 5, 1, "12:55 p.m.", "Calvin (Amelia)", "Will (Adelaide)"], ["St. Thomas Express Turbo", 6, 1, "1:45 p.m.", "Nathalie (Molly)", "Lejla (Alina)"]];
+const matches=[["Georgetown Impact", 2, 1, "10:00 a.m.", "Tana (Hannah)", "Joel (Allie)"], ["Waterloo Tigers Pounce", 3, 1, "10:50 a.m.", "Claire (Ava)", "Jeanette (Ray)"], ["Guelph Gryphons Gold Rush", 5, 1, "12:55 p.m.", "Calvin (Amelia)", "Will (Adelaide)"], ["St. Thomas Express Turbo", 6, 1, "1:45 p.m.", "Rob (Molly)", "Lejla (Alina)"]];
 const dialog=root.querySelector('dialog');root.querySelectorAll('[data-match]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.match),m=matches[i];root.querySelector('#detail-content').innerHTML='<h2 id="detail-title">Match '+(i+1)+' · vs. '+m[0]+'</h2><p><strong>Round '+m[1]+' · Court '+m[2]+'</strong><br>'+m[3]+' (projected)</p><div class="detail-duties"><p><strong>Linesperson</strong><br>'+m[4]+'</p><p><strong>Scorekeeper</strong><br>'+m[5]+'</p></div><p class="hint">'+(i===0?'Next Kraken match: 10:50 a.m., Court 1 — back-to-back.':i===1?'Lunch: 12:30–12:55 p.m. Next Kraken match: 12:55 p.m., Court 1.':i===2?'Next Kraken match: 1:45 p.m., Court 1 — back-to-back.':'Placement match follows according to final standings.')+'</p>';dialog.showModal();}));root.querySelector('.detail-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
 })();
 

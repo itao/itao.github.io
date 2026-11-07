@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F4EDD8"><title>Kraken · April 8–10, 2027</title><style>body{margin:0;background:#F4EDD8}#kraken-mobile{min-height:100vh}
+/* nov8-standings-style */
+#kraken-mobile .standing-headline{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:10px 0 16px}
+#kraken-mobile .standing-rank{font-size:34px;line-height:1.1;font-weight:500}
+#kraken-mobile .standing-metrics{display:flex;gap:30px;flex-wrap:wrap}
+#kraken-mobile .standing-metric{display:flex;flex-direction:column}
+#kraken-mobile .standing-metric strong{font-size:24px;font-weight:500;font-variant-numeric:tabular-nums}
+#kraken-mobile .standing-metric span{font-size:13px;color:var(--muted)}
+#kraken-mobile .standing-placement{border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
+#kraken-mobile .standings-list{table-layout:auto;font-size:14px}
+#kraken-mobile .standings-list th,#kraken-mobile .standings-list td{border:0;border-bottom:1px solid var(--line);padding:10px 5px;text-align:left}
+#kraken-mobile .standings-list th{background:transparent;color:var(--muted);font-size:12px}
+#kraken-mobile .standings-list th:first-child{width:36px}
+#kraken-mobile .standings-list .standing-record{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+#kraken-mobile .standings-list tr.our-standing{background:var(--highlight);color:var(--accent-text);font-weight:700}
+#kraken-mobile .standing-track{height:5px;background:var(--page);margin-top:7px}
+#kraken-mobile .standing-bar{height:5px;background:var(--muted);opacity:.5}
+#kraken-mobile .our-standing .standing-bar{background:var(--accent);opacity:1}
+#kraken-mobile .official-results{table-layout:auto}
+#kraken-mobile .official-results td:first-child{text-align:left}
+#kraken-mobile .official-results th:first-child{width:45%}
+/* end-nov8-standings-style */
+#kraken-mobile .event-navigation{max-width:760px;margin:12px auto 0;padding:0 12px}#kraken-mobile .event-navigation label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}#kraken-mobile .event-navigation select{width:100%;min-height:48px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:500 16px 'DM Sans',sans-serif}#kraken-mobile .event-navigation a{color:var(--accent-text)}</style><link rel="canonical" href="https://taoian.com/kraken2026/0408/"></head><body><div id="kraken-mobile"  data-theme="light">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
+#kraken-mobile{--page:#F4EDD8;--surface:#FDFAF2;--text:#2E2418;--muted:#665b4d;--line:#cfc5ae;--accent:#4E7A42;--highlight:#e3ebd7;--accent-text:#36582d;--info:#4A7A94;background:var(--page);color:var(--text);font:400 16px/1.45 'DM Sans',sans-serif;color-scheme:light;position:relative}
+#kraken-mobile[data-theme="dark"]{--page:#1C1810;--surface:#252018;--text:#EDE9D8;--muted:#c0baa8;--line:#554d3d;--accent:#97B893;--highlight:#34412d;--accent-text:#c2ddb6;--info:#8AACBF;color-scheme:dark}
+#kraken-mobile *{box-sizing:border-box}#kraken-mobile [hidden]{display:none!important}
+#kraken-mobile header{text-align:center;padding:20px 48px 16px;border-bottom:1px solid var(--line);position:relative}
+#kraken-mobile header h1{font:400 28px/1.12 'DM Serif Display',Georgia,serif;margin:0 0 8px}#kraken-mobile header p{margin:4px 0;font-size:15px}#kraken-mobile header .sub{font-size:13px;color:var(--muted)}
+#kraken-mobile .theme-switch{position:absolute;right:8px;top:12px;min-height:44px;min-width:44px;border:0;background:transparent;color:var(--text);border-radius:8px;display:grid;place-items:center}
+#kraken-mobile main{max-width:760px;margin:auto;padding:14px 12px calc(100px + env(safe-area-inset-bottom))}
+#kraken-mobile .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 12px;margin:0 0 14px}
+#kraken-mobile h2{font-size:20px;line-height:1.25;font-weight:500;color:var(--accent);margin:0 0 10px}#kraken-mobile h3{font-size:17px;font-weight:500;color:var(--accent);margin:18px 0 8px}#kraken-mobile p{margin:8px 0}
+#kraken-mobile table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px;line-height:1.35}#kraken-mobile th,#kraken-mobile td{border:1px solid var(--line);padding:8px 5px;text-align:center;overflow-wrap:break-word;vertical-align:middle}
+#kraken-mobile th{background:var(--highlight);color:var(--accent-text);font-weight:500}#kraken-mobile .pool-table th:first-child{width:27%}#kraken-mobile .pool-table th:last-child{width:17%}#kraken-mobile td.kraken{background:var(--highlight);color:var(--accent-text);font-weight:700;padding:0}
+#kraken-mobile .match-tap{width:100%;min-height:52px;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;padding:8px 5px;text-align:center;cursor:pointer}#kraken-mobile .pool-note{font-size:13px;color:var(--muted);margin:8px 0 16px}
+#kraken-mobile ul{margin:6px 0;padding-left:22px}#kraken-mobile li{margin:8px 0}#kraken-mobile .hint{font-size:14px;color:var(--muted)}
+#kraken-mobile .court{margin:0 0 18px}#kraken-mobile .court th.net{color:var(--accent-text);letter-spacing:.08em;padding:9px 8px}#kraken-mobile .court td{padding:12px 3px;font-size:15px}#kraken-mobile .court .server{background:var(--highlight);font-weight:500}#kraken-mobile .position{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}#kraken-mobile .server-label{display:block;font-size:12px;color:var(--accent-text);margin-top:4px}
+#kraken-mobile input.score{width:100%;max-width:80px;min-height:46px;font:400 18px 'DM Sans',sans-serif;text-align:center;padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:var(--page);color:var(--text)}
+#kraken-mobile button:focus-visible,#kraken-mobile input:focus-visible,#kraken-mobile summary:focus-visible{outline:3px solid var(--info);outline-offset:2px}
+#kraken-mobile nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+#kraken-mobile nav.tabs button{flex:1;min-width:0;min-height:70px;border:0;border-top:3px solid transparent;background:transparent;padding:10px 2px;color:var(--muted);font:500 13px 'DM Sans',sans-serif;cursor:pointer}#kraken-mobile nav.tabs .ico{display:flex;justify-content:center;margin-bottom:5px}#kraken-mobile nav.tabs button.active{color:var(--accent);border-top-color:var(--accent);background:var(--highlight)}
+#kraken-mobile a{color:var(--accent-text);text-underline-offset:3px}#kraken-mobile svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}#kraken-mobile footer{text-align:center;color:var(--muted);font-size:13px;padding:12px 0}#kraken-mobile details{margin-top:18px}#kraken-mobile summary{min-height:44px;padding:10px 0;cursor:pointer;color:var(--accent)}
+#kraken-mobile .match-detail{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text);padding:20px;width:calc(100% - 32px);max-width:420px;max-height:80vh;overflow:auto;margin:auto}#kraken-mobile .match-detail::backdrop{background:rgba(28,24,16,.5)}#kraken-mobile .match-detail h2{padding-right:28px}#kraken-mobile .detail-close{float:right;min-height:44px;min-width:44px;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit}#kraken-mobile .detail-duties{border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
+#kraken-mobile.preview-phone{height:800px;max-height:90vh;min-height:560px;display:flex;flex-direction:column;overflow:hidden;border-radius:14px}#kraken-mobile.preview-phone .mobile-scroll{min-height:0;overflow-y:auto;flex:1}#kraken-mobile.preview-phone main{padding-bottom:20px}#kraken-mobile.preview-phone nav.tabs{position:relative;flex-shrink:0;padding-bottom:0}#kraken-mobile.preview-phone .match-detail{position:absolute}
+@media(max-width:360px){#kraken-mobile header h1{font-size:25px}#kraken-mobile main{padding-left:8px;padding-right:8px}#kraken-mobile .card{padding:14px 8px}#kraken-mobile th,#kraken-mobile td{padding:7px 4px}#kraken-mobile .court td{font-size:14px}}
+
+</style>
+<div class="mobile-scroll">
+<header>
+  <button class="theme-switch" type="button" aria-label="Switch colour theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button><h1>SSVC Kraken</h1>
+  <p>13U Girls · 2026–27 Tournament Season</p>
+  <p class="sub">April 8–10, 2027 · Ontario Provincials · RIM Park, Waterloo</p>
+</header><div class="event-navigation"><p><a href="/kraken2026/">← Season calendar</a></p><label for="event-path">Choose tournament</label><select id="event-path" aria-label="Choose Kraken tournament"><option value="/kraken2026/1025/">Oct 25 · Keswick (past)</option><option value="/kraken2026/1108/">Nov 8 · Guelph (confirmed)</option><option value="/kraken2026/1128/">Nov 28 · OVA Provincial Cup</option><option value="/kraken2026/0109/">Jan 9–10 · OVA tournament (day TBD)</option><option value="/kraken2026/0123/">Jan 23 · Southern Shores tournament</option><option value="/kraken2026/0130/">Jan 30–31 · OVA tournament (day TBD)</option><option value="/kraken2026/0227/">Feb 27–28 · OVA tournament (day TBD)</option><option value="/kraken2026/0408/" selected>Apr 8–10 · Ontario Provincials</option></select></div>
+
+<main>
+  <!-- ============ SCHEDULE TAB ============ -->
+  <section id="tab-schedule" role="tabpanel" aria-labelledby="btn-schedule"><div class="card"><h2>April 8–10, 2027</h2><p><b>Ontario Provincials · RIM Park, Waterloo</b></p><p class="hint">Listed in coaches’ season announcement</p><h3>Game-day schedule</h3><p>Game times, opponents and courts to be announced.</p></div><div class="card"><h2>Parent duties</h2><p>Assignments to be confirmed with coaches.</p></div></section>
+
+  <!-- ============ ROSTER TAB ============ -->
+  <section id="tab-roster" role="tabpanel" aria-labelledby="btn-roster" hidden><div class="card"><h2>Kraken roster</h2><p>Attendance and starting lineups for this tournament are to be confirmed by the coaches.</p></div></section>
+
+  <!-- ============ RULES TAB ============ -->
+  <section id="tab-rules" role="tabpanel" aria-labelledby="btn-rules" hidden><div class="card"><h2>Format &amp; rules</h2><p>Tournament-specific rules will be added when published by the organizer.</p></div></section>
+
+  <!-- ============ SCORES TAB ============ -->
+  <section id="tab-scores" role="tabpanel" aria-labelledby="btn-scores" hidden><div class="card"><h2>Scores &amp; results</h2><p id="score-status" class="hint" role="status">Results and live standings will be added when published.</p></div></section>
+</main>
+
+</div><nav class="tabs" role="tablist" aria-label="Tournament pages">
+  <button type="button" id="btn-schedule" role="tab" aria-controls="tab-schedule" class="active" aria-selected="true"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h2M14 15h2"/></svg></span>Schedule</button>
+  <button type="button" id="btn-roster" role="tab" aria-controls="tab-roster" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 15a5 5 0 0 1 3 5"/></svg></span>Lineups</button>
+  <button type="button" id="btn-rules" role="tab" aria-controls="tab-rules" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v16M12 5C8 3 5 3 2 4v15c3-1 6-1 10 2 4-3 7-3 10-2V4c-3-1-6-1-10 1Z"/></svg></span>Rules</button>
+  <button type="button" id="btn-scores" role="tab" aria-controls="tab-scores" aria-selected="false"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6M9 16h6"/></svg></span>Scores</button>
+</nav>
+
+<dialog class="match-detail" aria-labelledby="detail-title"><button type="button" class="detail-close" aria-label="Close match details">×</button><div id="detail-content"></div></dialog>
+<script>
+(function(){
+const root=document.getElementById('kraken-mobile');
+const tabs=Array.from(root.querySelectorAll('nav.tabs button'));
+function showTab(tab){
+  tabs.forEach(b=>{const active=b===tab;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;root.querySelector('#'+b.getAttribute('aria-controls')).hidden=!active;});
+  root.querySelector('.mobile-scroll').scrollTop=0;
+  if(!root.classList.contains('preview-phone'))window.scrollTo(0,0);
+}
+tabs.forEach((b,index)=>{b.tabIndex=index===0?0:-1;b.addEventListener('click',()=>showTab(b));b.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight')n=(index+1)%tabs.length;if(e.key==='ArrowLeft')n=(index+tabs.length-1)%tabs.length;if(e.key==='Home')n=0;if(e.key==='End')n=tabs.length-1;if(n!==undefined){e.preventDefault();showTab(tabs[n]);tabs[n].focus();}});});
+const key='taoian-kraken-season-apr08';let state={scores:{},theme:'light'};
+try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved&&typeof saved==='object'){if(saved.scores&&typeof saved.scores==='object')state.scores=saved.scores;if(saved.theme==='dark')state.theme='dark';}}catch(e){root.querySelector('#score-status').textContent='Theme preference cannot be saved on this device.';}
+function save(){try{localStorage.setItem(key,JSON.stringify({theme:state.theme}));}catch(e){}}
+root.dataset.theme=state.theme;root.querySelector('.theme-switch').addEventListener('click',()=>{state.theme=state.theme==='light'?'dark':'light';root.dataset.theme=state.theme;save();});
+const matches=[["Georgetown Impact", 2, 1, "10:00 a.m."], ["Waterloo Tigers Pounce", 3, 1, "10:50 a.m."], ["Guelph Gryphons Gold Rush", 5, 1, "12:55 p.m."], ["St. Thomas Express Turbo", 6, 1, "1:45 p.m."]];
+const dialog=root.querySelector('dialog');root.querySelectorAll('[data-match]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.match),m=matches[i];root.querySelector('#detail-content').innerHTML='<h2 id="detail-title">Match '+(i+1)+' · vs. '+m[0]+'</h2><p><strong>Round '+m[1]+' · Court '+m[2]+'</strong><br>'+m[3]+' (projected)</p><div class="detail-duties"><p>One linesperson and one scorekeeper needed. Assignments to be confirmed with the coaches.</p></div><p class="hint">'+(i===0?'Next Kraken match: 10:50 a.m., Court 1 — back-to-back.':i===1?'Lunch: 12:30–12:55 p.m. Next Kraken match: 12:55 p.m., Court 1.':i===2?'Next Kraken match: 1:45 p.m., Court 1 — back-to-back.':'Placement match follows according to final standings.')+'</p>';dialog.showModal();}));root.querySelector('.detail-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
+})();
+
+</script>
+</div>
+<script>document.getElementById("event-path").addEventListener("change",function(){location.assign(this.value);});</script></body></html>

@@ -36,7 +36,10 @@
 #kraken-mobile th{background:var(--highlight);color:var(--accent-text);font-weight:500}#kraken-mobile .pool-table th:first-child{width:27%}#kraken-mobile .pool-table th:last-child{width:17%}#kraken-mobile td.kraken{background:var(--highlight);color:var(--accent-text);font-weight:700;padding:0}
 #kraken-mobile .match-tap{width:100%;min-height:52px;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;padding:8px 5px;text-align:center;cursor:pointer}#kraken-mobile .pool-note{font-size:13px;color:var(--muted);margin:8px 0 16px}
 #kraken-mobile ul{margin:6px 0;padding-left:22px}#kraken-mobile li{margin:8px 0}#kraken-mobile .hint{font-size:14px;color:var(--muted)}
-#kraken-mobile .court{margin:0 0 18px}#kraken-mobile .court th.net{color:var(--accent-text);letter-spacing:.08em;padding:9px 8px}#kraken-mobile .court td{padding:12px 3px;font-size:15px}#kraken-mobile .court .server{background:var(--highlight);font-weight:500}#kraken-mobile .position{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}#kraken-mobile .server-label{display:block;font-size:12px;color:var(--accent-text);margin-top:4px}
+#kraken-mobile .court{margin:0 0 18px}#kraken-mobile .court th.net{color:var(--accent-text);letter-spacing:.08em;padding:9px 8px}#kraken-mobile .court td{height:62px;padding:12px 3px;font-size:15px}
+#kraken-mobile .court .captain,#kraken-mobile .captain-swatch{background:var(--highlight)}
+#kraken-mobile .court .jersey{display:block;font-size:12px;color:var(--muted);margin-bottom:3px}
+#kraken-mobile .captain-swatch{display:inline-block;width:12px;height:12px;border:1px solid var(--line);vertical-align:-1px}
 #kraken-mobile input.score{width:100%;max-width:80px;min-height:46px;font:400 18px 'DM Sans',sans-serif;text-align:center;padding:8px 4px;border:1px solid var(--line);border-radius:8px;background:var(--page);color:var(--text)}
 #kraken-mobile button:focus-visible,#kraken-mobile input:focus-visible,#kraken-mobile summary:focus-visible{outline:3px solid var(--info);outline-offset:2px}
 #kraken-mobile nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:10;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
@@ -95,48 +98,48 @@
       <h2>Tournament lineups</h2>
       <h3>Purple</h3>
       <table class="court" aria-label="Purple lineup">
-        <tr><th class="net" colspan="3">NET · FACING FORWARD</th></tr>
+        <tr><th class="net" colspan="3">NET</th></tr>
         <tr>
-          <td><span class="position">4 · Front</span>Mackenzie (10)</td>
-          <td><span class="position">3 · Front</span>Molly (3)</td>
-          <td><span class="position">2 · Front</span>Ray (15)</td>
+          <td><span class="jersey">10</span>Mackenzie</td>
+          <td><span class="jersey">3</span>Molly</td>
+          <td><span class="jersey">15</span>Ray</td>
         </tr>
         <tr>
-          <td><span class="position">5 · Back</span><strong>Addy (23)</strong><sup><a href="#huntsville-captains" aria-label="Tournament captain">*</a></sup></td>
-          <td><span class="position">6 · Back</span>Bhavya (2)</td>
-          <td class="server"><span class="position">1 · Back</span>Amelia (12)<span class="server-label">Starts serving</span></td>
+          <td class="captain" aria-label="Addy, jersey 23, tournament captain"><span class="jersey">23</span>Addy</td>
+          <td><span class="jersey">2</span>Bhavya</td>
+          <td><span class="jersey">12</span>Amelia</td>
         </tr>
       </table>
       <h3>Orange</h3>
       <table class="court" aria-label="Orange lineup">
-        <tr><th class="net" colspan="3">NET · FACING FORWARD</th></tr>
+        <tr><th class="net" colspan="3">NET</th></tr>
         <tr>
-          <td><span class="position">4 · Front</span>Alina (21)</td>
-          <td><span class="position">3 · Front</span>Hannah (20)</td>
-          <td><span class="position">2 · Front</span><strong>Ava (22)</strong><sup><a href="#huntsville-captains" aria-label="Tournament captain">*</a></sup></td>
+          <td><span class="jersey">21</span>Alina</td>
+          <td><span class="jersey">20</span>Hannah</td>
+          <td class="captain" aria-label="Ava, jersey 22, tournament captain"><span class="jersey">22</span>Ava</td>
         </tr>
         <tr>
-          <td><span class="position">5 · Back</span>Laveah (14)</td>
-          <td><span class="position">6 · Back</span>Allie (5)</td>
-          <td class="server"><span class="position">1 · Back</span>Alexandra (7)<span class="server-label">Starts serving</span></td>
+          <td><span class="jersey">14</span>Laveah</td>
+          <td><span class="jersey">5</span>Allie</td>
+          <td><span class="jersey">7</span>Alexandra</td>
         </tr>
       </table>
       <h3>Black</h3>
       <p>Third-set lineup to be decided.</p>
       <table class="court" aria-label="Black lineup">
-        <tr><th class="net" colspan="3">NET · FACING FORWARD</th></tr>
+        <tr><th class="net" colspan="3">NET</th></tr>
         <tr>
-          <td><span class="position">4 · Front</span></td>
-          <td><span class="position">3 · Front</span></td>
-          <td><span class="position">2 · Front</span></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td><span class="position">5 · Back</span></td>
-          <td><span class="position">6 · Back</span></td>
-          <td><span class="position">1 · Back</span></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
-      <p class="hint" id="huntsville-captains">* Tournament captains</p>
+      <p class="hint"><span class="captain-swatch" aria-hidden="true"></span> Green cell = tournament captain</p>
     </div>
   </section>
 
